@@ -1,633 +1,1236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BCA Study Guide - Your Ultimate BCA Resource</title>
-<link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="icon" type="image/png" href="images/icon.png" />
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        /* Custom styles for the page */
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #020617; /* Even darker base */
-             /* Subtle grid pattern */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
+      /* Custom styles for the page */
+      body {
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #020617; /* Even darker base */
+        /* Subtle grid pattern */
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
 
-        /* Custom gradient background for hero */
-        .gradient-bg {
-            background-color: #0f0c29;
-            background-image: linear-gradient(to right top, #0c0a1e, #1d193f, #332663, #4c3389, #6a40b1);
-        }
-        
-        /* Animation for floating icons */
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
+      /* Custom gradient background for hero */
+      .gradient-bg {
+        background-color: #0f0c29;
+        background-image: linear-gradient(
+          to right top,
+          #0c0a1e,
+          #1d193f,
+          #332663,
+          #4c3389,
+          #6a40b1
+        );
+      }
 
-        .floating-icon {
-            animation: float 6s ease-in-out infinite;
+      /* Animation for floating icons */
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
         }
-        .floating-icon:nth-child(2) { animation-delay: 2s; }
-        .floating-icon:nth-child(3) { animation-delay: 4s; }
-        .floating-icon:nth-child(4) { animation-delay: 1s; }
-        .floating-icon:nth-child(5) { animation-delay: 3s; }
-        .floating-icon:nth-child(6) { animation-delay: 5s; }
+        50% {
+          transform: translateY(-20px) rotate(10deg);
+        }
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+      }
 
-        /* Style for active navigation link */
-        .nav-link.active {
-            color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+      .floating-icon {
+        animation: float 6s ease-in-out infinite;
+      }
+      .floating-icon:nth-child(2) {
+        animation-delay: 2s;
+      }
+      .floating-icon:nth-child(3) {
+        animation-delay: 4s;
+      }
+      .floating-icon:nth-child(4) {
+        animation-delay: 1s;
+      }
+      .floating-icon:nth-child(5) {
+        animation-delay: 3s;
+      }
+      .floating-icon:nth-child(6) {
+        animation-delay: 5s;
+      }
 
-        /* Smooth page transition effect */
-        .page {
-            display: none;
-            animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+      /* Style for active navigation link */
+      .nav-link.active {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        
-        /* Scroll reveal animation */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .reveal-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      /* Smooth page transition effect */
+      .page {
+        display: none;
+        animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
 
-
-        /* Initial page to be visible */
-        #home-page {
-            display: block;
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.98);
         }
-        
-        /* Custom focus rings and input styles */
-        
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Scroll reveal animation */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Initial page to be visible */
+      #home-page {
+        display: block;
+      }
+
+      /* Custom focus rings and input styles */
     </style>
-</head>
-<body class="bg-slate-900 text-slate-200">
-
+  </head>
+  <body class="bg-slate-900 text-slate-200">
     <div id="app-container" class="min-h-screen flex flex-col">
-
-        <!-- Header and Navigation -->
-        <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-700">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center">
-                        <a href="#" class="nav-link text-2xl font-bold text-white flex items-center gap-2" data-page="home-page">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
-                            <span>BCA Guide</span>
-                        </a>
-                    </div>
-                    <nav class="hidden md:flex items-center space-x-2">
-                        <a href="#" class="nav-link active font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="home-page">Home</a>
-                        <a href="#" class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="notes-page">Notes</a>
-                        <a href="#" class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="syllabus-page">Syllabus</a>
-                        <a href="#" class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="papers-page">Papers</a>
-                        <a href="#" class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="contact-page">Contact</a>
-                        <a href="#" class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="about-page">About us</a>
-                    </nav>
-                     <div class="md:hidden">
-                        <button id="mobile-menu-button" class="text-slate-300 hover:text-white">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                        </button>
-                    </div>
-                </div>
+      <!-- Header and Navigation -->
+      <header
+        class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-700"
+      >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <a
+                href="#"
+                class="nav-link text-2xl font-bold text-white flex items-center gap-2"
+                data-page="home-page"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-indigo-400"
+                >
+                  <path
+                    d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"
+                  ></path>
+                </svg>
+                <span>BCA Guide</span>
+              </a>
             </div>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#" class="nav-link active block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="home-page">Home</a>
-                <a href="#" class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="notes-page">Notes</a>
-                <a href="#" class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="syllabus-page">Syllabus</a>
-                <a href="#" class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="papers-page">Papers</a>
-                <a href="#" class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="contact-page">Contact</a>
-                <a href="#" class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition" data-page="about-page">About Us</a>
+            <nav class="hidden md:flex items-center space-x-2">
+              <a
+                href="#"
+                class="nav-link active font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+                data-page="home-page"
+                >Home</a
+              >
+              <a
+                href="#"
+                class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+                data-page="notes-page"
+                >Notes</a
+              >
+              <a
+                href="#"
+                class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+                data-page="syllabus-page"
+                >Syllabus</a
+              >
+              <a
+                href="#"
+                class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+                data-page="papers-page"
+                >Papers</a
+              >
+              <a
+                href="#"
+                class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+                data-page="contact-page"
+                >Contact</a
+              >
+              <a
+                href="#"
+                class="nav-link font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+                data-page="about-page"
+                >About us</a
+              >
+            </nav>
+            <div class="md:hidden">
+              <button
+                id="mobile-menu-button"
+                class="text-slate-300 hover:text-white"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  ></path>
+                </svg>
+              </button>
             </div>
-        </header>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3"
+        >
+          <a
+            href="#"
+            class="nav-link active block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+            data-page="home-page"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+            data-page="notes-page"
+            >Notes</a
+          >
+          <a
+            href="#"
+            class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+            data-page="syllabus-page"
+            >Syllabus</a
+          >
+          <a
+            href="#"
+            class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+            data-page="papers-page"
+            >Papers</a
+          >
+          <a
+            href="#"
+            class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+            data-page="contact-page"
+            >Contact</a
+          >
+          <a
+            href="#"
+            class="nav-link block font-medium text-slate-300 hover:bg-slate-800 hover:text-white px-3 py-2 rounded-md transition"
+            data-page="about-page"
+            >About Us</a
+          >
+        </div>
+      </header>
 
-        <!-- Main Content Area -->
-        <main class="flex-grow">
+      <!-- Main Content Area -->
+      <main class="flex-grow">
+        <!-- Home Page -->
+        <section id="home-page" class="page">
+          <div class="relative overflow-hidden gradient-bg">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <!-- Floating icons for motion effect -->
+            <div
+              class="absolute top-1/4 left-1/4 w-16 h-16 bg-indigo-500/20 rounded-full floating-icon"
+            ></div>
+            <div
+              class="absolute top-1/2 right-1/4 w-24 h-24 bg-purple-500/20 rounded-lg floating-icon"
+            ></div>
+            <div
+              class="absolute bottom-1/4 left-1/3 w-12 h-12 bg-teal-500/20 rounded-xl floating-icon"
+            ></div>
+            <div
+              class="absolute top-20 right-1/3 w-8 h-8 bg-pink-500/20 rounded-full floating-icon"
+            ></div>
+            <div
+              class="absolute bottom-10 left-10 w-20 h-20 bg-sky-500/20 rounded-md floating-icon"
+            ></div>
+            <div
+              class="absolute bottom-1/2 right-1/2 w-16 h-16 bg-fuchsia-500/20 rounded-full floating-icon"
+            ></div>
 
-            <!-- Home Page -->
-            <section id="home-page" class="page">
-                <div class="relative overflow-hidden gradient-bg">
-                    <div class="absolute inset-0 bg-black/40"></div>
-                    <!-- Floating icons for motion effect -->
-                    <div class="absolute top-1/4 left-1/4 w-16 h-16 bg-indigo-500/20 rounded-full floating-icon"></div>
-                    <div class="absolute top-1/2 right-1/4 w-24 h-24 bg-purple-500/20 rounded-lg floating-icon"></div>
-                    <div class="absolute bottom-1/4 left-1/3 w-12 h-12 bg-teal-500/20 rounded-xl floating-icon"></div>
-                    <div class="absolute top-20 right-1/3 w-8 h-8 bg-pink-500/20 rounded-full floating-icon"></div>
-                    <div class="absolute bottom-10 left-10 w-20 h-20 bg-sky-500/20 rounded-md floating-icon"></div>
-                    <div class="absolute bottom-1/2 right-1/2 w-16 h-16 bg-fuchsia-500/20 rounded-full floating-icon"></div>
-                    
-                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-48 text-center relative z-10">
-                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight">
-                            Unlock Your <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400">BCA Potential</span>
-                        </h1>
-                        <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
-                            Your one-stop destination for comprehensive notes, previous year papers, and syllabus for all semesters of BCA.
-                        </p>
-                        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="#" class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105" data-page="notes-page">Explore Notes</a>
-                            <a href="#" class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-md text-white bg-slate-900/50 hover:bg-slate-800 transition transform hover:scale-105" data-page="syllabus-page">View Syllabus</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Notes Page -->
-            <section id="notes-page" class="page py-16 sm:py-24">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12 reveal-on-scroll">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Subject Notes</h2>
-                        <p class="mt-4 text-lg text-slate-400">Find detailed notes for all your BCA subjects.</p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Subject Card Example -->
-                        <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-indigo-500 hover:scale-105 transition-all duration-300 reveal-on-scroll">
-                            <div class="flex items-center gap-4 mb-4">
-                               <div class="p-2 bg-indigo-500/20 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
-                                <h3 class="text-xl font-bold text-white">C Programming</h3>
-                            </div>
-                            <p class="text-slate-400">Master the fundamentals of C with our in-depth notes and examples.</p>
-                        </div>
-                        <div id="note-pending-java" class="relative bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-yellow-500 hover:scale-105 transition-all duration-300 reveal-on-scroll">
-                            <div class="absolute top-0 right-0 -mt-2 -mr-2">
-                                <span class="pending-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-600 text-yellow-100">Pending Approval</span>
-                            </div>
-                            <div class="flex items-center gap-4 mb-4">
-                               <div class="p-2 bg-yellow-500/20 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400"><path d="M10 14v-4a2 2 0 1 1 4 0v4"/><path d="M12 22v-2"/><path d="M20 12h2"/><path d="M2 12h2"/><path d="M18.36 18.36l1.42 1.42"/><path d="M4.22 4.22l1.42 1.42"/><path d="M18.36 5.64l1.42-1.42"/><path d="M4.22 19.78l1.42-1.42"/><path d="M12 2a2.83 2.83 0 0 1 2 2v2H10V4a2.83 2.83 0 0 1 2-2z"/><path d="M12 20a2.83 2.83 0 0 1-2-2v-2h4v2a2.83 2.83 0 0 1-2 2z"/></svg></div>
-                                <h3 class="text-xl font-bold text-white">Advanced Java</h3>
-                            </div>
-                            <p class="text-slate-400">Notes on advanced topics like Servlets, JSP, and JDBC for enterprise applications.</p>
-                        </div>
-                        <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-purple-500 hover:scale-105 transition-all duration-300 reveal-on-scroll">
-                           <div class="flex items-center gap-4 mb-4">
-                               <div class="p-2 bg-purple-500/20 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="12" y1="8" x2="12" y2="12"></line><line x1="9" y1="11" x2="15" y2="11"></line></svg></div>
-                                <h3 class="text-xl font-bold text-white">Data Structures</h3>
-                            </div>
-                            <p class="text-slate-400">Explore arrays, linked lists, stacks, queues, trees, and graphs.</p>
-                        </div>
-                        <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-teal-500 hover:scale-105 transition-all duration-300 reveal-on-scroll">
-                            <div class="flex items-center gap-4 mb-4">
-                               <div class="p-2 bg-teal-500/20 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-400"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-                                <h3 class="text-xl font-bold text-white">Web Development</h3>
-                            </div>
-                            <p class="text-slate-400">Learn HTML, CSS, JavaScript, and other modern web technologies.</p>
-                        </div>
-                         <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-sky-500 hover:scale-105 transition-all duration-300 reveal-on-scroll">
-                            <div class="flex items-center gap-4 mb-4">
-                               <div class="p-2 bg-sky-500/20 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-400"><path d="M12 20h.01"></path><path d="M12 4h.01"></path><path d="M4 12h.01"></path><path d="M20 12h.01"></path><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path><path d="M12 12h.01"></path></svg></div>
-                                <h3 class="text-xl font-bold text-white">Operating Systems</h3>
-                            </div>
-                            <p class="text-slate-400">Understand the core concepts of process management and memory.</p>
-                        </div>
-                        <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-pink-500 hover:scale-105 transition-all duration-300 reveal-on-scroll">
-                           <div class="flex items-center gap-4 mb-4">
-                               <div class="p-2 bg-pink-500/20 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-pink-400"><path d="M16.5 10.5c.9-.9 2.5-1 3.5-1a2.5 2.5 0 1 1 0 5c-1 0-2.6-.1-3.5-1M8 8c0-3.3 2.7-6 6-6"></path><path d="M12 12c-3.3 0-6-2.7-6-6s2.7-6 6-6"></path><path d="M6 18c-3.3 0-6-2.7-6-6s2.7-6 6-6"></path><path d="M20 16c0 3.3-2.7 6-6 6"></path></svg></div>
-                                <h3 class="text-xl font-bold text-white">Computer Networks</h3>
-                            </div>
-                            <p class="text-slate-400">Dive into networking models, protocols, and security concepts.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Syllabus Page -->
-            <section id="syllabus-page" class="page py-16 sm:py-24">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12 reveal-on-scroll">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">University Syllabus</h2>
-                        <p class="mt-4 text-lg text-slate-400">Official syllabus for each semester, all in one place.</p>
-                    </div>
-                     <div class="max-w-3xl mx-auto space-y-4">
-                        <!-- Accordion Item: Semester I -->
-                        <div class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll">
-                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white">
-                                <span>Semester I</span>
-                                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-5 pt-0 text-slate-400">
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>Computer Fundamental & Office Automation</li>
-                                    <li>Programming Principle & Algorithm</li>
-                                    <li>Principle of Management</li>
-                                    <li>Business Communication</li>
-                                    <li>Mathematics-I</li>
-                                    <li>Computer Laboratory and Practical Work of Office Automation</li>
-                                    <li>Computer Laboratory and Practical Work of Programming Principle & Algorithm</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Accordion Item: Semester II -->
-                        <div class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll">
-                             <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white">
-                                <span>Semester II</span>
-                                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-5 pt-0 text-slate-400">
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>C Programming</li>
-                                    <li>Digital Electronics & Computer Organization</li>
-                                    <li>Organization Behaviour</li>
-                                    <li>Financial Accounting & Management</li>
-                                    <li>Mathematics II</li>
-                                    <li>Computer Laboratory and Practical Work of C Programming</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Accordion Item: Semester III -->
-                        <div class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll">
-                             <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white">
-                                <span>Semester III</span>
-                                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-5 pt-0 text-slate-400">
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>Object Oriented Programming Using C++</li>
-                                    <li>Data Structure Using C & C++</li>
-                                    <li>Computer Architecture & Assembly Language</li>
-                                    <li>Business Economics</li>
-                                    <li>Elements of Statistics</li>
-                                    <li>Computer Laboratory and Practical Work of OOPS</li>
-                                    <li>Computer Laboratory and Practical Work of DS</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Accordion Item: Semester IV -->
-                        <div class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll">
-                             <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white">
-                                <span>Semester IV</span>
-                                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-5 pt-0 text-slate-400">
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>Computer Graphics & Multimedia Application</li>
-                                    <li>Operating System</li>
-                                    <li>Software Engineering</li>
-                                    <li>Optimization Techniques</li>
-                                    <li>Mathematics-III</li>
-                                    <li>Computer Laboratory and Practical Work of Computer Graphics & Multimedia Application</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Accordion Item: Semester V -->
-                        <div class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll">
-                             <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white">
-                                <span>Semester V</span>
-                                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-5 pt-0 text-slate-400">
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>Introduction to DBMS</li>
-                                    <li>Java Programming and Dynamic Webpage Design</li>
-                                    <li>Computer Network</li>
-                                    <li>Numerical Methods</li>
-                                    <li>Minor Project</li>
-                                    <li>Viva-Voice on Summer Training</li>
-                                    <li>Computer Laboratory and Practical Work of DBMS</li>
-                                    <li>Computer Laboratory and Practical Work of Java Programming & Dynamic Webpage Design</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Accordion Item: Semester VI -->
-                        <div class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll">
-                             <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white">
-                                <span>Semester VI</span>
-                                <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </button>
-                            <div class="accordion-content hidden p-5 pt-0 text-slate-400">
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li>Computer Network Security</li>
-                                    <li>Information System: Analysis Design & Implementation</li>
-                                    <li>E-Commerce</li>
-                                    <li>Knowledge Management</li>
-                                    <li>Major Project</li>
-                                    <li>Presentation/Seminar based on Major Project</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Papers Page -->
-            <section id="papers-page" class="page py-16 sm:py-24">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12 reveal-on-scroll">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Previous Year Papers</h2>
-                        <p class="mt-4 text-lg text-slate-400">Practice with question papers from previous years to excel in your exams.</p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                        <!-- Year Card -->
-                          <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2024</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                         <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2023</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                        <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2022</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                         <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2021</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                        <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2020</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                        <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2019</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                        <a href="#" class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll">
-                            <h3 class="text-2xl font-bold text-white">2018</h3>
-                            <p class="text-slate-400 mt-1">View Papers</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Page -->
-            <section id="contact-page" class="page py-16 sm:py-24">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12 reveal-on-scroll">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Get In Touch</h2>
-                        <p class="mt-4 text-lg text-slate-400">Have a question or want to contribute? Send us a message!</p>
-                    </div>
-                    <div class="max-w-xl mx-auto bg-slate-800/50 border border-slate-700 p-8 rounded-lg reveal-on-scroll">
-                        <form id="contact-form" class="space-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-slate-300">Full Name</label>
-                                <input type="text" id="name" name="name" class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-slate-300">Email Address</label>
-                                <input type="email" id="email" name="email" class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" required>
-                            </div>
-                             <div>
-                                <label for="subject" class="block text-sm font-medium text-slate-300">Subject</label>
-                                <input type="text" id="subject" name="subject" class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" required>
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-slate-300">Message</label>
-                                <textarea id="message" name="message" rows="4" class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" required></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition transform hover:scale-105">
-                                    Send Message
-                                </button>
-                            </div>
-                            <p id="form-status" class="text-center text-green-400"></p>
-                        </form>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Admin Page -->
-            <section id="admin-page" class="page py-16 sm:py-24">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12 reveal-on-scroll">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Admin Panel</h2>
-                        <p class="mt-4 text-lg text-slate-400">Review and approve new content submissions.</p>
-                    </div>
-                    <div id="admin-content-list" class="max-w-3xl mx-auto space-y-4">
-                        <div id="pending-item-1" class="bg-slate-800/50 p-5 rounded-lg border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4 reveal-on-scroll">
-                            <div>
-                                <h3 class="font-bold text-white">New Notes: Advanced Java</h3>
-                                <p class="text-sm text-slate-400">Submitted by user 'student123'</p>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <button data-action="approve" data-target="note-pending-java" data-item="pending-item-1" class="admin-action-btn bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition transform hover:scale-105">Approve</button>
-                                <button data-action="reject" data-item="pending-item-1" class="admin-action-btn bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md transition transform hover:scale-105">Reject</button>
-                            </div>
-                        </div>
-                        <div id="admin-empty-state" class="hidden text-center py-10 bg-slate-800/50 rounded-lg border border-dashed border-slate-700">
-                             <p class="text-slate-400">No pending submissions.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- About Page -->
-<section id="about-page" class="page py-1 sm:py-24">
-  <section class="mt-12 bg-gray-800 p-6 rounded-2xl shadow-lg reveal-on-scroll">
-    <h2 class="text-3xl font-extrabold text-indigo-400 mb-8 text-center glow-animate">
-      About Developers
-    </h2>
-
-    <!-- Aryan -->
-    <div class="mb-10 flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left">
-      <!-- Photo -->
-      <img src="images/aryan.jpg" alt="Aryan Gupta"
-           class="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-lg border-4 border-indigo-400 object-cover aspect-square mb-4 md:mb-0
-                  transition-transform duration-300 ease-in-out transform hover:scale-110">
-      <!-- Text -->
-      <div>
-        <h3 class="text-2xl font-bold text-white">Concepts & Designed by ARYAN GUPTA</h3>
-        <p class="text-gray-300 mt-3 text-lg leading-relaxed">
-          Aryan Gupta was responsible for conceptualizing and designing the structure of this project. 
-          His focus was on creating a clean UI/UX and ensuring that the platform is simple, 
-          user-friendly, and accessible for all BCA students.
-        </p>
-
-        <!-- Instagram Link -->
-        <a href="https://www.instagram.com/_guptaaryan_?igsh=dTQzdHZ2M3F0MnBx" target="_blank" 
-           class="inline-flex items-center mt-3 text-indigo-400 hover:text-indigo-500 font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.679 3.5 4 5.179 4 7.25v8.5C4 18.321 5.679 20 7.75 20h8.5c2.071 0 3.75-1.679 3.75-3.75v-8.5C20 5.179 18.321 3.5 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-          </svg>
-          @_guptaaryan_
-        </a>
-      </div>
-    </div>
-
-    <hr class="border-gray-600 my-8">
-
-    <!-- Krishna -->
-    <div class="flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left">
-      <!-- Photo -->
-      <img src="images/krishna.jpg" alt="Krishna Seth"
-           class="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-lg border-4 border-indigo-400 object-cover aspect-square mb-4 md:mb-0
-                  transition-transform duration-300 ease-in-out transform hover:scale-110">
-
-      <!-- Text -->
-      <div>
-        <h3 class="text-2xl font-bold text-white">Hosted & Developed by KRISHNA SETH</h3>
-        <p class="text-gray-300 mt-3 text-lg leading-relaxed">
-          Krishna Seth handled the full-stack development of this project, implementing the backend 
-          functionalities, ensuring security, and managing deployment. He is responsible for hosting 
-          and maintaining the project to make it available for everyone online.
-        </p>
-
-        <!-- Instagram Link -->
-        <a href="https://www.instagram.com/me_krishna_seth/" target="_blank" 
-           class="inline-flex items-center mt-3 text-indigo-400 hover:text-indigo-500 font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.679 3.5 4 5.179 4 7.25v8.5C4 18.321 5.679 20 7.75 20h8.5c2.071 0 3.75-1.679 3.75-3.75v-8.5C20 5.179 18.321 3.5 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-          </svg>
-          @me_krishna_seth
-        </a>
-      </div>
-    </div>
-  </section>
-</section>
-
-
-        </main>
-        
-        <!-- Footer -->
-        <footer class="bg-slate-900 border-t border-slate-800 mt-16">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-slate-400">
-                <p class="mb-2">&copy; 2024 BCA Study Guide. All Rights Reserved.</p>
-                <p>Designed & Developed by Aryan Gupta & Krishna Seth. | <a href="#" class="nav-link underline hover:text-indigo-400" data-page="admin-page">Admin Login</a></p>
+            <div
+              class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-48 text-center relative z-10"
+            >
+              <h1
+                class="mt-[-80px] text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight"
+              >
+                Unlock Your
+                <span
+                  class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-400"
+                >
+                  BCA Potential
+                </span>
+              </h1>
+              <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
+                No more Telegram hunts. No more asking seniors. All your BCA
+                syllabus, notes, and papers - Now at one powerful platform. Your
+                complete BCA guide, simplified.
+              </p>
+              <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
+                Your one-stop destination for comprehensive notes, previous year
+                papers, and syllabus for all semesters of BCA.
+              </p>
+              <div
+                class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+              >
+                <a
+                  href="#"
+                  class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
+                  data-page="notes-page"
+                  >Explore Notes</a
+                >
+                <a
+                  href="#"
+                  class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-md text-white bg-slate-900/50 hover:bg-slate-800 transition transform hover:scale-105"
+                  data-page="syllabus-page"
+                  >View Syllabus</a
+                >
+              </div>
             </div>
-        </footer>
+          </div>
+        </section>
 
+        <!-- Notes Page -->
+        <section id="notes-page" class="page py-16 sm:py-24">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-on-scroll">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                Subject Notes
+              </h2>
+              <p class="mt-4 text-lg text-slate-400">
+                Find detailed notes for all your BCA subjects.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Subject Card Example -->
+              <div
+                class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-indigo-500 hover:scale-105 transition-all duration-300 reveal-on-scroll"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-2 bg-indigo-500/20 rounded-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-indigo-400"
+                    >
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">C Programming</h3>
+                </div>
+                <p class="text-slate-400">
+                  Master the fundamentals of C with our in-depth notes and
+                  examples.
+                </p>
+              </div>
+              <div
+                id="note-pending-java"
+                class="relative bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-yellow-500 hover:scale-105 transition-all duration-300 reveal-on-scroll"
+              >
+                <div class="absolute top-0 right-0 -mt-2 -mr-2">
+                  <span
+                    class="pending-badge inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-600 text-yellow-100"
+                    >Pending Approval</span
+                  >
+                </div>
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-2 bg-yellow-500/20 rounded-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-yellow-400"
+                    >
+                      <path d="M10 14v-4a2 2 0 1 1 4 0v4" />
+                      <path d="M12 22v-2" />
+                      <path d="M20 12h2" />
+                      <path d="M2 12h2" />
+                      <path d="M18.36 18.36l1.42 1.42" />
+                      <path d="M4.22 4.22l1.42 1.42" />
+                      <path d="M18.36 5.64l1.42-1.42" />
+                      <path d="M4.22 19.78l1.42-1.42" />
+                      <path
+                        d="M12 2a2.83 2.83 0 0 1 2 2v2H10V4a2.83 2.83 0 0 1 2-2z"
+                      />
+                      <path
+                        d="M12 20a2.83 2.83 0 0 1-2-2v-2h4v2a2.83 2.83 0 0 1-2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">Advanced Java</h3>
+                </div>
+                <p class="text-slate-400">
+                  Notes on advanced topics like Servlets, JSP, and JDBC for
+                  enterprise applications.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-purple-500 hover:scale-105 transition-all duration-300 reveal-on-scroll"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-2 bg-purple-500/20 rounded-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-purple-400"
+                    >
+                      <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path>
+                      <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="9" y1="11" x2="15" y2="11"></line>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">Data Structures</h3>
+                </div>
+                <p class="text-slate-400">
+                  Explore arrays, linked lists, stacks, queues, trees, and
+                  graphs.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-teal-500 hover:scale-105 transition-all duration-300 reveal-on-scroll"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-2 bg-teal-500/20 rounded-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-teal-400"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">Web Development</h3>
+                </div>
+                <p class="text-slate-400">
+                  Learn HTML, CSS, JavaScript, and other modern web
+                  technologies.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-sky-500 hover:scale-105 transition-all duration-300 reveal-on-scroll"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-2 bg-sky-500/20 rounded-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-sky-400"
+                    >
+                      <path d="M12 20h.01"></path>
+                      <path d="M12 4h.01"></path>
+                      <path d="M4 12h.01"></path>
+                      <path d="M20 12h.01"></path>
+                      <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                      <path d="M12 12h.01"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">
+                    Operating Systems
+                  </h3>
+                </div>
+                <p class="text-slate-400">
+                  Understand the core concepts of process management and memory.
+                </p>
+              </div>
+              <div
+                class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-pink-500 hover:scale-105 transition-all duration-300 reveal-on-scroll"
+              >
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-2 bg-pink-500/20 rounded-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-pink-400"
+                    >
+                      <path
+                        d="M16.5 10.5c.9-.9 2.5-1 3.5-1a2.5 2.5 0 1 1 0 5c-1 0-2.6-.1-3.5-1M8 8c0-3.3 2.7-6 6-6"
+                      ></path>
+                      <path d="M12 12c-3.3 0-6-2.7-6-6s2.7-6 6-6"></path>
+                      <path d="M6 18c-3.3 0-6-2.7-6-6s2.7-6 6-6"></path>
+                      <path d="M20 16c0 3.3-2.7 6-6 6"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">
+                    Computer Networks
+                  </h3>
+                </div>
+                <p class="text-slate-400">
+                  Dive into networking models, protocols, and security concepts.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Syllabus Page -->
+        <section id="syllabus-page" class="page py-16 sm:py-24">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-on-scroll">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                University Syllabus
+              </h2>
+              <p class="mt-4 text-lg text-slate-400">
+                Official syllabus for each semester, all in one place.
+              </p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-4">
+              <!-- Accordion Item: Semester I -->
+              <div
+                class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white"
+                >
+                  <span>Semester I</span>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="accordion-content hidden p-5 pt-0 text-slate-400">
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>Computer Fundamental & Office Automation</li>
+                    <li>Programming Principle & Algorithm</li>
+                    <li>Principle of Management</li>
+                    <li>Business Communication</li>
+                    <li>Mathematics-I</li>
+                    <li>
+                      Computer Laboratory and Practical Work of Office
+                      Automation
+                    </li>
+                    <li>
+                      Computer Laboratory and Practical Work of Programming
+                      Principle & Algorithm
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Accordion Item: Semester II -->
+              <div
+                class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white"
+                >
+                  <span>Semester II</span>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="accordion-content hidden p-5 pt-0 text-slate-400">
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>C Programming</li>
+                    <li>Digital Electronics & Computer Organization</li>
+                    <li>Organization Behaviour</li>
+                    <li>Financial Accounting & Management</li>
+                    <li>Mathematics II</li>
+                    <li>
+                      Computer Laboratory and Practical Work of C Programming
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Accordion Item: Semester III -->
+              <div
+                class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white"
+                >
+                  <span>Semester III</span>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="accordion-content hidden p-5 pt-0 text-slate-400">
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>Object Oriented Programming Using C++</li>
+                    <li>Data Structure Using C & C++</li>
+                    <li>Computer Architecture & Assembly Language</li>
+                    <li>Business Economics</li>
+                    <li>Elements of Statistics</li>
+                    <li>Computer Laboratory and Practical Work of OOPS</li>
+                    <li>Computer Laboratory and Practical Work of DS</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Accordion Item: Semester IV -->
+              <div
+                class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white"
+                >
+                  <span>Semester IV</span>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="accordion-content hidden p-5 pt-0 text-slate-400">
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>Computer Graphics & Multimedia Application</li>
+                    <li>Operating System</li>
+                    <li>Software Engineering</li>
+                    <li>Optimization Techniques</li>
+                    <li>Mathematics-III</li>
+                    <li>
+                      Computer Laboratory and Practical Work of Computer
+                      Graphics & Multimedia Application
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Accordion Item: Semester V -->
+              <div
+                class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white"
+                >
+                  <span>Semester V</span>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="accordion-content hidden p-5 pt-0 text-slate-400">
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>Introduction to DBMS</li>
+                    <li>Java Programming and Dynamic Webpage Design</li>
+                    <li>Computer Network</li>
+                    <li>Numerical Methods</li>
+                    <li>Minor Project</li>
+                    <li>Viva-Voice on Summer Training</li>
+                    <li>Computer Laboratory and Practical Work of DBMS</li>
+                    <li>
+                      Computer Laboratory and Practical Work of Java Programming
+                      & Dynamic Webpage Design
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Accordion Item: Semester VI -->
+              <div
+                class="accordion-item bg-slate-800/50 rounded-lg border border-slate-700 reveal-on-scroll"
+              >
+                <button
+                  class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-white"
+                >
+                  <span>Semester VI</span>
+                  <svg
+                    class="w-5 h-5 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="accordion-content hidden p-5 pt-0 text-slate-400">
+                  <ul class="list-disc list-inside space-y-2">
+                    <li>Computer Network Security</li>
+                    <li>
+                      Information System: Analysis Design & Implementation
+                    </li>
+                    <li>E-Commerce</li>
+                    <li>Knowledge Management</li>
+                    <li>Major Project</li>
+                    <li>Presentation/Seminar based on Major Project</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Papers Page -->
+        <section id="papers-page" class="page py-16 sm:py-24">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-on-scroll">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                Previous Year Papers
+              </h2>
+              <p class="mt-4 text-lg text-slate-400">
+                Practice with question papers from previous years to excel in
+                your exams.
+              </p>
+            </div>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center"
+            >
+              <!-- Year Card -->
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2024</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2023</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2022</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2021</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2020</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2019</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+              <a
+                href="#"
+                class="block bg-slate-800/50 p-8 rounded-lg border border-slate-700 hover:bg-slate-800 hover:border-indigo-500 transition-all duration-300 transform hover:-translate-y-2 reveal-on-scroll"
+              >
+                <h3 class="text-2xl font-bold text-white">2018</h3>
+                <p class="text-slate-400 mt-1">View Papers</p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact-page" class="page py-16 sm:py-24">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-on-scroll">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                Get In Touch
+              </h2>
+              <p class="mt-4 text-lg text-slate-400">
+                Have a question or want to contribute? Send us a message!
+              </p>
+            </div>
+            <div
+              class="max-w-xl mx-auto bg-slate-800/50 border border-slate-700 p-8 rounded-lg reveal-on-scroll"
+            >
+              <form id="contact-form" class="space-y-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-slate-300"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-slate-300"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="subject"
+                    class="block text-sm font-medium text-slate-300"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-slate-300"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+                    required
+                  ></textarea>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition transform hover:scale-105"
+                  >
+                    Send Message
+                  </button>
+                </div>
+                <p id="form-status" class="text-center text-green-400"></p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Admin Page -->
+        <section id="admin-page" class="page py-16 sm:py-24">
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-on-scroll">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                Admin Panel
+              </h2>
+              <p class="mt-4 text-lg text-slate-400">
+                Review and approve new content submissions.
+              </p>
+            </div>
+            <div id="admin-content-list" class="max-w-3xl mx-auto space-y-4">
+              <div
+                id="pending-item-1"
+                class="bg-slate-800/50 p-5 rounded-lg border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4 reveal-on-scroll"
+              >
+                <div>
+                  <h3 class="font-bold text-white">New Notes: Advanced Java</h3>
+                  <p class="text-sm text-slate-400">
+                    Submitted by user 'student123'
+                  </p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <button
+                    data-action="approve"
+                    data-target="note-pending-java"
+                    data-item="pending-item-1"
+                    class="admin-action-btn bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition transform hover:scale-105"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    data-action="reject"
+                    data-item="pending-item-1"
+                    class="admin-action-btn bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md transition transform hover:scale-105"
+                  >
+                    Reject
+                  </button>
+                </div>
+              </div>
+              <div
+                id="admin-empty-state"
+                class="hidden text-center py-10 bg-slate-800/50 rounded-lg border border-dashed border-slate-700"
+              >
+                <p class="text-slate-400">No pending submissions.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about-page" class="page py-1 sm:py-24">
+          <section
+            class="mt-12 bg-gray-800 p-6 rounded-2xl shadow-lg reveal-on-scroll"
+          >
+            <h2
+              class="text-3xl font-extrabold text-indigo-400 mb-8 text-center glow-animate"
+            >
+              About Developers
+            </h2>
+
+            <!-- Aryan -->
+            <div
+              class="mb-10 flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left"
+            >
+              <!-- Photo -->
+              <img
+                src="images/aryan.jpg"
+                alt="Aryan Gupta"
+                class="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-lg border-4 border-indigo-400 object-cover aspect-square mb-4 md:mb-0 transition-transform duration-300 ease-in-out transform hover:scale-110"
+              />
+              <!-- Text -->
+              <div>
+                <h3 class="text-2xl font-bold text-white">
+                  Concepts & Designed by ARYAN GUPTA
+                </h3>
+                <p class="text-gray-300 mt-3 text-lg leading-relaxed">
+                  Aryan Gupta was responsible for conceptualizing and designing
+                  the structure of this project. His focus was on creating a
+                  clean UI/UX and ensuring that the platform is simple,
+                  user-friendly, and accessible for all BCA students.
+                </p>
+
+                <!-- Instagram Link -->
+                <a
+                  href="https://www.instagram.com/_guptaaryan_?igsh=dTQzdHZ2M3F0MnBx"
+                  target="_blank"
+                  class="inline-flex items-center mt-3 text-indigo-400 hover:text-indigo-500 font-semibold"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 mr-2"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.679 3.5 4 5.179 4 7.25v8.5C4 18.321 5.679 20 7.75 20h8.5c2.071 0 3.75-1.679 3.75-3.75v-8.5C20 5.179 18.321 3.5 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"
+                    />
+                  </svg>
+                  @_guptaaryan_
+                </a>
+              </div>
+            </div>
+
+            <hr class="border-gray-600 my-8" />
+
+            <!-- Krishna -->
+            <div
+              class="flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left"
+            >
+              <!-- Photo -->
+              <img
+                src="images/krishna.jpg"
+                alt="Krishna Seth"
+                class="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-lg border-4 border-indigo-400 object-cover aspect-square mb-4 md:mb-0 transition-transform duration-300 ease-in-out transform hover:scale-110"
+              />
+
+              <!-- Text -->
+              <div>
+                <h3 class="text-2xl font-bold text-white">
+                  Hosted & Developed by KRISHNA SETH
+                </h3>
+                <p class="text-gray-300 mt-3 text-lg leading-relaxed">
+                  Krishna Seth handled the full-stack development of this
+                  project, implementing the backend functionalities, ensuring
+                  security, and managing deployment. He is responsible for
+                  hosting and maintaining the project to make it available for
+                  everyone online.
+                </p>
+
+                <!-- Instagram Link -->
+                <a
+                  href="https://www.instagram.com/me_krishna_seth/"
+                  target="_blank"
+                  class="inline-flex items-center mt-3 text-indigo-400 hover:text-indigo-500 font-semibold"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 mr-2"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.679 3.5 4 5.179 4 7.25v8.5C4 18.321 5.679 20 7.75 20h8.5c2.071 0 3.75-1.679 3.75-3.75v-8.5C20 5.179 18.321 3.5 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"
+                    />
+                  </svg>
+                  @me_krishna_seth
+                </a>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-slate-900 border-t border-slate-800 mt-16">
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-slate-400"
+        >
+          <p class="mb-2">&copy; 2024 BCA Study Guide. All Rights Reserved.</p>
+          <p>
+            Designed & Developed by Aryan Gupta & Krishna Seth. |
+            <a
+              href="#"
+              class="nav-link underline hover:text-indigo-400"
+              data-page="admin-page"
+              >Admin Login</a
+            >
+          </p>
+        </div>
+      </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const pages = document.querySelectorAll('.page');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const pages = document.querySelectorAll(".page");
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
 
-            // --- Page Navigation Logic ---
-            function showPage(pageId) {
-                pages.forEach(page => {
-                    page.style.display = page.id === pageId ? 'block' : 'none';
-                });
+        // --- Page Navigation Logic ---
+        function showPage(pageId) {
+          pages.forEach((page) => {
+            page.style.display = page.id === pageId ? "block" : "none";
+          });
 
-                navLinks.forEach(link => {
-                    link.classList.toggle('active', link.dataset.page === pageId);
-                });
+          navLinks.forEach((link) => {
+            link.classList.toggle("active", link.dataset.page === pageId);
+          });
 
-                mobileMenu.classList.add('hidden');
-                window.scrollTo(0, 0);
-                
-                // Trigger scroll animations on the new page
-                handleScrollAnimations();
-            }
+          mobileMenu.classList.add("hidden");
+          window.scrollTo(0, 0);
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const pageId = link.dataset.page;
-                    showPage(pageId);
-                });
-            });
+          // Trigger scroll animations on the new page
+          handleScrollAnimations();
+        }
 
-            // --- Mobile Menu Toggle ---
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // --- Accordion Logic ---
-            const accordionItems = document.querySelectorAll('.accordion-item');
-            accordionItems.forEach(item => {
-                const header = item.querySelector('.accordion-header');
-                header.addEventListener('click', () => {
-                    const content = item.querySelector('.accordion-content');
-                    const icon = header.querySelector('svg');
-                    content.classList.toggle('hidden');
-                    icon.classList.toggle('rotate-180');
-                });
-            });
-
-            // --- Scroll Reveal Animation Logic ---
-            const scrollElements = document.querySelectorAll('.reveal-on-scroll');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            function handleScrollAnimations() {
-                 scrollElements.forEach(el => observer.observe(el));
-            }
-            handleScrollAnimations(); // Initial check
-
-            // --- Contact Form Logic ---
-            const contactForm = document.getElementById('contact-form');
-            const formStatus = document.getElementById('form-status');
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                formStatus.textContent = 'Thank you! Your message has been sent.';
-                contactForm.reset();
-                setTimeout(() => { formStatus.textContent = ''; }, 5000);
-            });
-            
-            // --- Admin Panel Simulation Logic ---
-            const adminActionButtons = document.querySelectorAll('.admin-action-btn');
-            const adminContentList = document.getElementById('admin-content-list');
-            const adminEmptyState = document.getElementById('admin-empty-state');
-
-            adminActionButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const action = button.dataset.action;
-                    const itemToRemoveId = button.dataset.item;
-                    const itemToRemove = document.getElementById(itemToRemoveId);
-
-                    if (action === 'approve') {
-                        const targetNoteId = button.dataset.target;
-                        const noteCard = document.getElementById(targetNoteId);
-                        const pendingBadge = noteCard.querySelector('.pending-badge');
-                        if (pendingBadge) {
-                            pendingBadge.remove();
-                        }
-                        // Change border color on approval
-                        noteCard.classList.remove('hover:border-yellow-500');
-                        noteCard.classList.add('hover:border-green-500');
-                    }
-                    
-                    if(itemToRemove) {
-                        itemToRemove.style.transition = 'opacity 0.5s, transform 0.5s';
-                        itemToRemove.style.opacity = '0';
-                        itemToRemove.style.transform = 'translateX(-20px)';
-                        setTimeout(() => {
-                           itemToRemove.remove();
-                           // Check if list is empty
-                           if(adminContentList.querySelectorAll('.reveal-on-scroll').length === 1) { // 1 because empty state is there
-                               adminEmptyState.classList.remove('hidden');
-                           }
-                        }, 500);
-                    }
-                });
-            });
-
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const pageId = link.dataset.page;
+            showPage(pageId);
+          });
         });
-    </script>
-</body>
-</html>
 
+        // --- Mobile Menu Toggle ---
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // --- Accordion Logic ---
+        const accordionItems = document.querySelectorAll(".accordion-item");
+        accordionItems.forEach((item) => {
+          const header = item.querySelector(".accordion-header");
+          header.addEventListener("click", () => {
+            const content = item.querySelector(".accordion-content");
+            const icon = header.querySelector("svg");
+            content.classList.toggle("hidden");
+            icon.classList.toggle("rotate-180");
+          });
+        });
+
+        // --- Scroll Reveal Animation Logic ---
+        const scrollElements = document.querySelectorAll(".reveal-on-scroll");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        function handleScrollAnimations() {
+          scrollElements.forEach((el) => observer.observe(el));
+        }
+        handleScrollAnimations(); // Initial check
+
+        // --- Contact Form Logic ---
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+        contactForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          formStatus.textContent = "Thank you! Your message has been sent.";
+          contactForm.reset();
+          setTimeout(() => {
+            formStatus.textContent = "";
+          }, 5000);
+        });
+
+        // --- Admin Panel Simulation Logic ---
+        const adminActionButtons =
+          document.querySelectorAll(".admin-action-btn");
+        const adminContentList = document.getElementById("admin-content-list");
+        const adminEmptyState = document.getElementById("admin-empty-state");
+
+        adminActionButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const action = button.dataset.action;
+            const itemToRemoveId = button.dataset.item;
+            const itemToRemove = document.getElementById(itemToRemoveId);
+
+            if (action === "approve") {
+              const targetNoteId = button.dataset.target;
+              const noteCard = document.getElementById(targetNoteId);
+              const pendingBadge = noteCard.querySelector(".pending-badge");
+              if (pendingBadge) {
+                pendingBadge.remove();
+              }
+              // Change border color on approval
+              noteCard.classList.remove("hover:border-yellow-500");
+              noteCard.classList.add("hover:border-green-500");
+            }
+
+            if (itemToRemove) {
+              itemToRemove.style.transition = "opacity 0.5s, transform 0.5s";
+              itemToRemove.style.opacity = "0";
+              itemToRemove.style.transform = "translateX(-20px)";
+              setTimeout(() => {
+                itemToRemove.remove();
+                // Check if list is empty
+                if (
+                  adminContentList.querySelectorAll(".reveal-on-scroll")
+                    .length === 1
+                ) {
+                  // 1 because empty state is there
+                  adminEmptyState.classList.remove("hidden");
+                }
+              }, 500);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
