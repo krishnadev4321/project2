@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester 1 Notes Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff9500;
+            --text: #333;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --shadow: rgba(0, 0, 0, 0.1);
+            --glass: rgba(255, 255, 255, 0.1);
+            --search-bg: rgba(255, 255, 255, 0.15);
+            --bg-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+
+        .dark-theme {
+            --primary: #8a2be2;
+            --secondary: #4a86e8;
+            --accent: #ffaa33;
+            --text: #f0f0f0;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --shadow: rgba(0, 0, 0, 0.4);
+            --glass: rgba(0, 0, 0, 0.2);
+            --search-bg: rgba(0, 0, 0, 0.2);
+            --bg-gradient: linear-gradient(135deg, #1a033d 0%, #103a80 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+       header {
+    text-align: center;
+    padding: 20px 0 20px;   /* top padding 80 ? 40 px */
+}
+
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(255, 170, 51, 0.6);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px var(--shadow);
+            color: white;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            color: white;
+        }
+
+        .stat-item i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .stat-text {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .subject-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+       .subject-icon {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    color: var(--accent);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    
+    /* Standard property for spec compliance */
+    background-clip: text;
+
+    /* Vendor prefix for WebKit browsers (Chrome/Safari/Edge) */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+        .subject-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .subject-card p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            line-height: 1.4;
+            flex-grow: 1;
+            color: var(--text);
+        }
+
+        .topics {
+            text-align: left;
+            margin-bottom: 15px;
+            background: var(--glass);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .topics h3 {
+            margin-bottom: 8px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .topics ul {
+        
+            padding-left: 8px;
+        }
+
+        .topics li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--text);
+            
+            
+        }
+
+        .topics li:before {
+            content: "\2022"; 
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent), #ff6b00);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 157, 0, 0.4);
+            border: none;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 157, 0, 0.6);
+        }
+
+        .btn i {
+            margin-left: 6px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            background: var(--search-bg);
+            backdrop-filter: blur(5px);
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            padding-left: 60px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            gap: 20px;
+        }
+
+        .feature {
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px var(--shadow);
+            color: white;
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            opacity: 0.8;
+            padding: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 8px 15px;
+            }
+            
+            .subject-card {
+                padding: 15px;
+            }
+            
+            .subject-icon {
+                font-size: 2.5rem;
+            }
+            
+            .subject-card h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+        <span>Dark Mode</span>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>Semester 1 Notes</h1>
+            <p class="tagline">Access high-quality study materials for all subjects</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-book"></i>
+                    <div class="stat-text">
+                        <div class="stat-number">5</div>
+                        <div>Subjects</div>
+                    </div>
+                </div>
+               
+                
+            </div>
+            
+            
+        </header>
+        
+        <div class="notes-grid">
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h2>Computer Fundamental & Office Automation</h2>
+                <p>Complete notes on computer basics, hardware, software, and office automation tools.</p>
+                
+                <div class="topics">
+                    <h3><i class="fas fa-list"></i> Key Topics</h3>
+                    <ul>
+                        <li>Computer Organization</li>
+                        <li>Operating Systems</li>
+                        <li>MS Office Suite</li>
+                        <li>Internet Basics</li>
+                    </ul>
+                </div>
+                
+                <a href="NotesWritten/Semester1/ComputerFundamentals.pdf" class="btn">View Notes <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h2>Programming Principle & Algorithm</h2>
+                <p>Learn programming fundamentals, algorithm design, and problem-solving techniques.</p>
+                
+                <div class="topics">
+                    <h3><i class="fas fa-list"></i> Key Topics</h3>
+                    <ul>
+                        <li>Programming Basics</li>
+                        <li>Data Structures</li>
+                        <li>Algorithm Design</li>
+                        <li>Flowcharts & Pseudocode</li>
+                    </ul>
+                </div>
+                
+                <a href="NotesWritten/Semester1/CProgramming.pdf" class="btn">View Notes <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Principle of Management</h2>
+                <p>Management theories, functions, and practices for effective organizational leadership.</p>
+                
+                <div class="topics">
+                    <h3><i class="fas fa-list"></i> Key Topics</h3>
+                    <ul>
+                        <li>Management Theories</li>
+                        <li>Planning & Organizing</li>
+                        <li>Leadership Styles</li>
+                        <li>Decision Making</li>
+                    </ul>
+                </div>
+                
+                <a href="NotesWritten/Semester1/PrincipleofManagement.pdf" class="btn">View Notes <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h2>Business Communication</h2>
+                <p>Effective communication strategies, professional writing, and presentation skills.</p>
+                
+                <div class="topics">
+                    <h3><i class="fas fa-list"></i> Key Topics</h3>
+                    <ul>
+                        <li>Communication Models</li>
+                        <li>Business Writing</li>
+                        <li>Presentation Skills</li>
+                        <li>Non-verbal Communication</li>
+                    </ul>
+                </div>
+                
+                <a href="NotesWritten/semester1/BusinessCommunication.pdf" class="btn">View Notes <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h2>Mathematics I</h2>
+                <p>Mathematical concepts, formulas, and problem-solving techniques for beginners.</p>
+                
+                <div class="topics">
+                    <h3><i class="fas fa-list"></i> Key Topics</h3>
+                    <ul>
+                        <li>Calculus</li>
+                        <li>Linear Algebra</li>
+                        <li>Probability</li>
+                        <li>Statistics</li>
+                    </ul>
+                </div>
+                
+                <a href="NotesWritten/Semester1/math.pdf" class="btn">View Notes <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-download"></i>
+                <h3>Download PDFs</h3>
+                <p>Get all notes in printable PDF format</p>
+            </div>
+            
+        
+    </div>
+<footer>
+    <p>&copy; <span id="year"></span> Semester 1 Notes Hb. All rights reserved.</p>
+</footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            
+            if (isDark) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Simple animation for cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.subject-card');
+            
+            cards.forEach((card, index) => {
+                // Add slight delay for staggered animation
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+            
+            // Add search functionality
+            const searchBox = document.querySelector('.search-box input');
+            searchBox.addEventListener('keyup', function() {
+                const searchTerm = searchBox.value.toLowerCase();
+                const subjects = document.querySelectorAll('.subject-card');
+                
+                subjects.forEach(subject => {
+                    const subjectName = subject.querySelector('h2').textContent.toLowerCase();
+                    const subjectDesc = subject.querySelector('p').textContent.toLowerCase();
+                    const subjectTopics = subject.querySelector('.topics').textContent.toLowerCase();
+                    
+                    if (subjectName.includes(searchTerm) || subjectDesc.includes(searchTerm) || subjectTopics.includes(searchTerm)) {
+                        subject.style.display = 'flex';
+                    } else {
+                        subject.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
