@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Page Title (60 chars ke andar) -->
+  <title>MGKVP BCA Notes, Syllabus & Papers | BCA Guide</title>
+
+  <!-- Character Encoding -->
+  <meta charset="UTF-8" />
+
+  <!-- Mobile Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Description (search result snippet, max ~155 chars) -->
+  <meta name="description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah download karein. Updated 2025." />
+
+  <!-- Keywords (optional, Google me weight kam hai par dusre search engines ke liye theek hai) -->
+  <meta name="keywords" content="MGKVP BCA, BCA notes, BCA syllabus, MGKVP BCA papers, BCA Guide" />
+
+  <!-- Author -->
+  <meta name="author" content="Krishna Seth" />
+
+  <!-- Robots (index/follow settings) -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical (duplicate URL handle) -->
+  <link rel="canonical" href="https://bca-guide-web.onrender.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MGKVP BCA Notes, Syllabus & Papers | BCA Guide" />
+  <meta property="og:description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah." />
+  <meta property="og:url" content="https://bca-guide-web.onrender.com/" />
+  <meta property="og:image" content="https://bca-guide-web.onrender.com/assets/cover.jpg" />
+  <meta property="og:site_name" content="BCA Guide" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MGKVP BCA Notes, Syllabus & Papers | BCA Guide" />
+  <meta name="twitter:description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah." />
+  <meta name="twitter:image" content="https://bca-guide-web.onrender.com/assets/cover.jpg" />
+
+  <!-- Theme color (mobile browsers ke liye tab color) -->
+  <meta name="theme-color" content="#6D28D9" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #8b5cf6;
+            --primary-dark: #6d28d9;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary: #8b5cf6;
+            --primary-light: #a78bfa;
+            --primary-dark: #7c3aed;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --text-light: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Subject Cards */
+        .subjects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex: 1;
+        }
+
+        .subject-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .subject-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .subject-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subject-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .subject-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .subject-btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            text-align: center;
+        }
+
+        .subject-btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        /* Notes Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .chapter-list {
+            list-style-type: none;
+        }
+
+        .chapter-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chapter-list li:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .chapter-list a:hover {
+            color: var(--primary);
+        }
+
+        .chapter-list i {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 2rem 0;
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .subjects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>MGKVP - BCA Semester 4</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Semester 4 Study Notes</h1>
+            <p>Access comprehensive notes for all Semester 4 subjects in one place</p>
+        </div>
+    </section>
+
+    <!-- Subject Cards -->
+    <div class="container">
+        <div class="subjects-container">
+            <!-- OOPs Card -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="subject-content">
+                     <h3>Computer Graphics & Multimedia Application</h3>
+                    <p>Learn about graphics algorithms, rendering techniques, multimedia systems, and applications with detailed notes and visual examples.</p>
+                    <a href="NotesWritten/semester4/computer.pdf" class="subject-btn" >View Notes</a>
+                </div>
+            </div>
+
+            <!-- Data Structure Card -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <div class="subject-content">
+  <h3>Operating System</h3>
+                    <p>Master process management, memory allocation, file systems, and security concepts with comprehensive operating system notes.</p>
+                    <a href="NotesWritten/semester4/operating.pdf" class="subject-btn" >View Notes</a>
+                </div>
+            </div>
+
+            <!-- Computer Architecture Card -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="subject-content">
+                    <h3>Software Engineering</h3>
+                    <p>Understand software development lifecycle, design patterns, testing methodologies, and project management techniques.</p>
+                    <a href="NotesWritten/semester4/Software.pdf" class="subject-btn">View Notes</a>
+                </div>
+            </div>
+
+            <!-- Business Economics Card -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="subject-content">
+                    <h3>Optimization Techniques</h3>
+                    <p>Explore linear programming, nonlinear optimization, queuing theory, and simulation methods for problem-solving.</p>
+                    <a href="NotesWritten/semester4/optimization.pdf" class="subject-btn" >View Notes</a>
+                </div>
+            </div>
+
+            <!-- Statistics Card -->
+            <div class="subject-card">
+                <div class="subject-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="subject-content">
+                    <h3>Mathematics-III</h3>
+                    <p>Advanced mathematical concepts including numerical methods, probability theory, statistics, and their computer applications.</p>
+                    <a href="NotesWritten/semester4/math.pdf" class="subject-btn" >View Notes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Modal -->
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2025 Mahatma Ghandhi Kashi Vidyapeeth Varanasi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+    // ?? Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const icon = themeToggle.querySelector('i');
+
+    // Check saved theme or system preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+        document.body.classList.add('dark-mode');
+        icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // ? Subject Card Scroll Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.subject-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+    });
+</script>
+
+</body>
+</html>
