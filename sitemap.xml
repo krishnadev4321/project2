@@ -3,21 +3,88 @@
   <url>
     <loc>https://bca-guide-web.onrender.com/</loc>
   </url>
+
+  <!-- Notes  -->
+
+  <!-- Semester 1 -->
   <url>
     <loc>https://bca-guide-web.onrender.com/Notes/sem1.html</loc>
   </url>
+
+  <!-- Semester 2 -->
   <url>
     <loc>https://bca-guide-web.onrender.com/Notes/sem2.html</loc>
   </url>
+  <!-- Semester 3 -->
   <url>
     <loc>https://bca-guide-web.onrender.com/Notes/sem3.html</loc>
   </url>
+  <!-- Semester 4 -->
   <url>
     <loc>https://bca-guide-web.onrender.com/Notes/sem4.html</loc>
   </url>
+
+                             <!-- PYQS -->
+          <!-- Semester 1 -->
   <url>
     <loc>https://bca-guide-web.onrender.com/pyq/sem1.html</loc>
   </url>
-  <ul>
-  <!-- Baaki pages bhi add karo -->
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2025/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2024/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2023/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2022/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2021/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2020/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2019/webpage.html</loc>
+  </url>
+    <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem1.html/semester1/2018/webpage.html</loc>
+  </url>
+  
+  
+                      <!-- pyq Semester 2 -->
+
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2025/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2024/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2023/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2022/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2021/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2020/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2019/webpage.html</loc>
+  </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/pyq/sem2.html/semester2/2018/webpage.html</loc>
+  </url>
+
+  
+  <!-- Yaha pe aur baaki URLs isi tarah <url><loc>...</loc></url> ke andar add karo -->
 </urlset>
