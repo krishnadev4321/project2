@@ -168,11 +168,106 @@
       #home-page {
         display: block;
       }
-
+@keyframes fadeInScale {
+  from {opacity:0;transform: translate(-50%,13%) scale(0.92);}
+  to   {opacity:1;transform: translate(-50%,-50%) scale(1);}
+}
+@keyframes neonPulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.3); opacity: 0.4; }
+}
+@keyframes neonScan {
+  0% { left: -100%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+#close-alert:hover{
+  opacity:1;
+  color:#00ffaa;
+  text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+  transform: scale(1.1);
+}
+.glow-text {
+  text-shadow:
+    0 0 10px #00ffaa,
+    0 0 20px #00ffaa,
+    0 0 40px #00ffaa,
+    0 0 80px #00ffaa;
+  animation: neonGlow 2s infinite alternate ease-in-out;
+  color: #ffffff;
+}
+@keyframes neonGlow{
+  0%{text-shadow:0 0 10px #00ffaa,0 0 20px #00ffaa,0 0 30px #00ffaa;}
+  100%{text-shadow:0 0 15px #00ffaa,0 0 30px #00ffaa,0 0 45px #00ffaa,0 0 60px #00ffaa;}
+}
       /* Custom focus rings and input styles */
     </style>
   </head>
   <body class="bg-slate-900 text-slate-200">
+<div id="custom-alert"
+     style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+            z-index:9999;min-width:340px;max-width:97vw;
+            background: radial-gradient(circle at 20% 80%,#00ffaa15 25%,transparent 50%),
+                        radial-gradient(circle at 80% 20%,#ff00aa15 25%,transparent 50%),
+                        radial-gradient(circle at 40% 40%,#aa00ff15 25%,transparent 50%),
+                        linear-gradient(135deg,#0a0a0a 55%,#1a1a1a 90%) ;
+            color: #fafafa; padding:40px 38px 28px 38px; border-radius:22px;
+            box-shadow: 0 0 30px #00ffaa44, 0 4px 40px rgba(0, 255, 170, 0.15);
+            display:flex;align-items:flex-start;
+            gap:14px;font-size:1.18em;backdrop-filter: blur(2.5px);
+            animation: fadeInScale 0.8s cubic-bezier(.22,1.15,.35,1.1);
+            overflow:hidden;border:1px solid #00ffaa33;">
+  
+  <!-- Neon Animated Background Elements -->
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;">
+    <div style="position:absolute;top:15%;left:15%;width:80px;height:80px;border-radius:50%;
+                background:radial-gradient(circle,#00ffaa 0%,transparent 70%);
+                filter:blur(15px);opacity:0.3;
+                animation:neonPulse 4s infinite ease-in-out;animation-delay:0s;"></div>
+    <div style="position:absolute;top:65%;left:75%;width:60px;height:60px;border-radius:50%;
+                background:radial-gradient(circle,#ff00aa 0%,transparent 70%);
+                filter:blur(12px);opacity:0.25;
+                animation:neonPulse 3.5s infinite ease-in-out;animation-delay:1s;"></div>
+    <div style="position:absolute;top:25%;left:80%;width:70px;height:70px;border-radius:50%;
+                background:radial-gradient(circle,#aa00ff 0%,transparent 70%);
+                filter:blur(18px);opacity:0.2;
+                animation:neonPulse 5s infinite ease-in-out;animation-delay:0.7s;"></div>
+    <div style="position:absolute;top:75%;left:25%;width:55px;height:55px;border-radius:50%;
+                background:radial-gradient(circle,#00aaff 0%,transparent 70%);
+                filter:blur(10px);opacity:0.3;
+                animation:neonPulse 4.5s infinite ease-in-out;animation-delay:1.5s;"></div>
+    
+    <!-- Moving Neon Lines -->
+    <div style="position:absolute;top:0;left:-100%;width:100%;height:8px;
+                background:linear-gradient(90deg,transparent,#ff00aa,transparent);
+                filter:blur(1px);animation:neonScan 3s infinite linear;animation-delay:0s;"></div>
+    <div style="position:absolute;top:50%;left:-100%;width:100%;height:3px;
+                background:linear-gradient(90deg,transparent,#00ffaa,transparent);
+                filter:blur(0.5px);animation:neonScan 4s infinite linear;animation-delay:1s;"></div>
+    <div style="position:absolute;bottom:0;left:-100%;width:100%;height:10px;
+                background:linear-gradient(90deg,transparent,#aa00ff,transparent);
+                filter:blur(1px);animation:neonScan 3.5s infinite linear;animation-delay:0.5s;"></div>
+  </div>
+
+  <div style="flex:1; padding-right:10px;position:relative;z-index:2;">
+    <strong class="glow-text" style="font-size:1.19em;"> Website Updates </strong>
+    <div style="margin-top:10px;font-weight:500;line-height:1.7;font-size:1.08em;">
+      -> Assignment template section added On Home Page<br>
+      -> All Semester 2 PYQs uploaded.<br>
+      -> Notes up to Semester 4 have been uploaded. <br>
+      -> Servers is active for 24x7.
+
+    </div>
+  </div>
+  <button id="close-alert"
+    style="margin-left:0;margin-top:-14px;background:none;border:none;color:#fff;
+           font-size:2.2em;cursor:pointer;line-height:0.7;opacity:0.83;transition:all 0.3s;position:relative;z-index:2;">
+    &times;
+  </button>
+</div>
+
+
+
     <div id="app-container" class="min-h-screen flex flex-col">
       <!-- Header and Navigation -->
       <header
@@ -352,7 +447,7 @@
               
               <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
                 No more Telegram hunts. No more asking seniors for help or running around for notes and syllabus.
-We've brought everything you need for the BCA course together in one centralized place.
+We've brought everything you need for the BCA course together in one centralized place. READYMADE ASSIGNMENTS TEMPLATES .
               </p>
               <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
                 Your one-stop destination for comprehensive notes, previous year
@@ -372,6 +467,11 @@ We've brought everything you need for the BCA course together in one centralized
                   class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-md text-white bg-slate-900/50 hover:bg-slate-800 transition transform hover:scale-105"
                   data-page="syllabus-page"
                   >View Syllabus</a
+                >
+                <a
+                  href="title/webpage.html"
+                  class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
+                  >Assignment Templates </a
                 >
               </div>
             </div>
@@ -1116,129 +1216,151 @@ We've brought everything you need for the BCA course together in one centralized
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const navLinks = document.querySelectorAll(".nav-link");
-        const pages = document.querySelectorAll(".page");
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        const mobileMenu = document.getElementById("mobile-menu");
+document.getElementById("close-alert").onclick = function() {
+  const alert = document.getElementById("custom-alert");
+  alert.style.transition = "opacity 0.33s";
+  alert.style.opacity = "0";
+  setTimeout(()=>alert.style.display="none",320);
+};
 
-        // --- Page Navigation Logic ---
-        function showPage(pageId) {
-          pages.forEach((page) => {
-            page.style.display = page.id === pageId ? "block" : "none";
-          });
 
-          navLinks.forEach((link) => {
-            link.classList.toggle("active", link.dataset.page === pageId);
-          });
 
-          mobileMenu.classList.add("hidden");
-          window.scrollTo(0, 0);
+// this website js
+     document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".nav-link");
+  const pages = document.querySelectorAll(".page");
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-          // Trigger scroll animations on the new page
-          handleScrollAnimations();
+  // --- Page Navigation Logic ---
+  function showPage(pageId) {
+    pages.forEach((page) => {
+      page.style.display = page.id === pageId ? "block" : "none";
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.dataset.page === pageId);
+    });
+
+    mobileMenu.classList.add("hidden");
+    window.scrollTo(0, 0);
+
+    // Trigger scroll animations on the new page
+    handleScrollAnimations();
+  }
+
+  // Updated navigation handler
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute('href');
+      const pageId = link.dataset.page;
+
+      // Allow direct navigation for external HTML files
+      if (href && href.endsWith('.html')) return;
+
+      // Internal SPA page switch logic
+      if (pageId) {
+        e.preventDefault();
+        showPage(pageId);
+      }
+      // If no data-page, anchor behaves normally
+    });
+  });
+
+  // --- Mobile Menu Toggle ---
+  mobileMenuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // --- Accordion Logic ---
+  const accordionItems = document.querySelectorAll(".accordion-item");
+  accordionItems.forEach((item) => {
+    const header = item.querySelector(".accordion-header");
+    header.addEventListener("click", () => {
+      const content = item.querySelector(".accordion-content");
+      const icon = header.querySelector("svg");
+      content.classList.toggle("hidden");
+      icon.classList.toggle("rotate-180");
+    });
+  });
+
+  // --- Scroll Reveal Animation Logic ---
+  const scrollElements = document.querySelectorAll(".reveal-on-scroll");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
         }
-
-        navLinks.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const pageId = link.dataset.page;
-            showPage(pageId);
-          });
-        });
-
-        // --- Mobile Menu Toggle ---
-        mobileMenuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-
-        // --- Accordion Logic ---
-        const accordionItems = document.querySelectorAll(".accordion-item");
-        accordionItems.forEach((item) => {
-          const header = item.querySelector(".accordion-header");
-          header.addEventListener("click", () => {
-            const content = item.querySelector(".accordion-content");
-            const icon = header.querySelector("svg");
-            content.classList.toggle("hidden");
-            icon.classList.toggle("rotate-180");
-          });
-        });
-
-        // --- Scroll Reveal Animation Logic ---
-        const scrollElements = document.querySelectorAll(".reveal-on-scroll");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-              }
-            });
-          },
-          {
-            threshold: 0.1,
-          }
-        );
-
-        function handleScrollAnimations() {
-          scrollElements.forEach((el) => observer.observe(el));
-        }
-        handleScrollAnimations(); // Initial check
-
-        // --- Contact Form Logic ---
-        const contactForm = document.getElementById("contact-form");
-        const formStatus = document.getElementById("form-status");
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          formStatus.textContent = "Thank you! Your message has been sent.";
-          contactForm.reset();
-          setTimeout(() => {
-            formStatus.textContent = "";
-          }, 5000);
-        });
-
-        // --- Admin Panel Simulation Logic ---
-        const adminActionButtons =
-          document.querySelectorAll(".admin-action-btn");
-        const adminContentList = document.getElementById("admin-content-list");
-        const adminEmptyState = document.getElementById("admin-empty-state");
-
-        adminActionButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            const action = button.dataset.action;
-            const itemToRemoveId = button.dataset.item;
-            const itemToRemove = document.getElementById(itemToRemoveId);
-
-            if (action === "approve") {
-              const targetNoteId = button.dataset.target;
-              const noteCard = document.getElementById(targetNoteId);
-              const pendingBadge = noteCard.querySelector(".pending-badge");
-              if (pendingBadge) {
-                pendingBadge.remove();
-              }
-              // Change border color on approval
-              noteCard.classList.remove("hover:border-yellow-500");
-              noteCard.classList.add("hover:border-green-500");
-            }
-
-            if (itemToRemove) {
-              itemToRemove.style.transition = "opacity 0.5s, transform 0.5s";
-              itemToRemove.style.opacity = "0";
-              itemToRemove.style.transform = "translateX(-20px)";
-              setTimeout(() => {
-                itemToRemove.remove();
-                // Check if list is empty
-                if (
-                  adminContentList.querySelectorAll(".reveal-on-scroll")
-                    .length === 1
-                ) {
-                  // 1 because empty state is there
-                  adminEmptyState.classList.remove("hidden");
-                }
-              }, 500);
-            }
-          });
-        });
       });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+
+  function handleScrollAnimations() {
+    scrollElements.forEach((el) => observer.observe(el));
+  }
+  handleScrollAnimations(); // Initial check
+
+  // --- Contact Form Logic ---
+  const contactForm = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formStatus.textContent = "Thank you! Your message has been sent.";
+      contactForm.reset();
+      setTimeout(() => {
+        formStatus.textContent = "";
+      }, 5000);
+    });
+  }
+
+  // --- Admin Panel Simulation Logic ---
+  const adminActionButtons =
+    document.querySelectorAll(".admin-action-btn");
+  const adminContentList = document.getElementById("admin-content-list");
+  const adminEmptyState = document.getElementById("admin-empty-state");
+
+  adminActionButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      const itemToRemoveId = button.dataset.item;
+      const itemToRemove = document.getElementById(itemToRemoveId);
+
+      if (action === "approve") {
+        const targetNoteId = button.dataset.target;
+        const noteCard = document.getElementById(targetNoteId);
+        const pendingBadge = noteCard.querySelector(".pending-badge");
+        if (pendingBadge) {
+          pendingBadge.remove();
+        }
+        // Change border color on approval
+        noteCard.classList.remove("hover:border-yellow-500");
+        noteCard.classList.add("hover:border-green-500");
+      }
+
+      if (itemToRemove) {
+        itemToRemove.style.transition = "opacity 0.5s, transform 0.5s";
+        itemToRemove.style.opacity = "0";
+        itemToRemove.style.transform = "translateX(-20px)";
+        setTimeout(() => {
+          itemToRemove.remove();
+          // Check if list is empty
+          if (
+            adminContentList.querySelectorAll(".reveal-on-scroll")
+              .length === 1
+          ) {
+            // 1 because empty state is there
+            adminEmptyState.classList.remove("hidden");
+          }
+        }, 500);
+      }
+    });
+  });
+});
     </script>
   </body>
 </html>
