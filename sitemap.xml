@@ -93,5 +93,8 @@
   <url>
     <loc>https://bca-guide-web.onrender.com/title/title1.html</loc>
   </url>
+  <url>
+    <loc>https://bca-guide-web.onrender.com/title/title2.html</loc>
+  </url>
   <!-- Yaha pe aur baaki URLs isi tarah <url><loc>...</loc></url> ke andar add karo -->
 </urlset>

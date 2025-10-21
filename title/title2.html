@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MGKVP BCA Notes | Semester-wise Study Material & Papers - BCA Guide</title>
     
 
@@ -66,15 +67,16 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
-    />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    />  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     body {
       font-family: 'Times New Roman', Times, serif;
-      background: #f0f0f0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       margin: 0;
-      padding: 12px;
+      padding: 20px;
+      min-height: 100vh;
     }
+    
     .wrapper {
       display: flex;
       flex-direction: row;
@@ -85,21 +87,27 @@
       margin: 0 auto;
       flex-wrap: wrap;
     }
+    
     .form-container {
       width: 370px;
       background: white;
       padding: 28px 24px;
-      border-radius: 9px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.09);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
       font-size: 1.2em;
       box-sizing: border-box;
     }
+    
     .form-container h3 {
       text-align: center;
       margin-top: 0;
-      color: #e3342f;
+      color: #8B0000;
       font-size: 1.4em;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 10px;
     }
+    
     .form-container label {
       display: block;
       margin-bottom: 5px;
@@ -107,22 +115,32 @@
       color: #555;
       font-size: 1.1em;
     }
+    
     .form-container input[type="text"],
     .form-container input[type="file"] {
       width: 96%;
       padding: 10px;
       margin-bottom: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
       font-size: 1.1em;
       box-sizing: border-box;
+      transition: all 0.3s;
     }
+    
+    .form-container input[type="text"]:focus {
+      border-color: #8B0000;
+      box-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
+      outline: none;
+    }
+    
     .form-container input[type="checkbox"] {
       transform: scale(1.3);
       margin-right: 8px;
       vertical-align: middle;
       cursor: pointer;
     }
+    
     .checkbox-label {
       font-size: 1.1em;
       cursor: pointer;
@@ -133,36 +151,54 @@
       display: flex;
       align-items: center;
     }
+    
     .button-group {
       display: flex;
       gap: 10px;
+      margin-top: 10px;
     }
+    
     .form-container button {
       flex: 1;
       padding: 12px;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 1.2em;
       cursor: pointer;
       font-weight: 600;
+      transition: all 0.3s;
     }
-    #reviewBtn { background-color: #007bff; }
-    #reviewBtn:hover { background-color: #0056b3; }
-    #downloadBtn { background-color: #4CAF50; }
-    #downloadBtn:hover { background-color: #45a049; }
+    
+    #reviewBtn { 
+      background-color: #007bff; 
+    }
+    
+    #reviewBtn:hover { 
+      background-color: #0056b3; 
+      transform: translateY(-2px);
+    }
+    
+    #downloadBtn { 
+      background-color: #4CAF50; 
+    }
+    
+    #downloadBtn:hover { 
+      background-color: #45a049; 
+      transform: translateY(-2px);
+    }
 
+    /* Stylish Page Design */
     .page {
       flex: 1 1 650px;
       max-width: 210mm;
       width: 210mm;
       min-height: 297mm;
-      background: #E0F2F7;
-      padding: 18mm 12mm 18mm 12mm;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 15mm 15mm 15mm 15mm;
       margin-bottom: 18px;
       box-sizing: border-box;
-      border: 10px double #8B0000;
-      box-shadow: 0 0 15px rgba(0,0,0,0.32);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
       display: flex;
       flex-direction: column;
       text-align: center;
@@ -170,56 +206,112 @@
       font-size: 1.15em;
       overflow: hidden;
     }
+    
+    /* Image Border using CSS */
+    .page::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 15px solid transparent;
+      border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none" stroke="%238B0000" stroke-width="8" rx="10" ry="10"/></svg>') 30 stretch;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Circular Header with University Name */
+    .circular-header {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .circular-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #8B0000;
+      border-radius: 0 0 50% 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
     .university-name {
       font-family: 'Algerian', 'Garamond', serif;
-      font-size: clamp(38px, 5.5vw, 58px);
+      font-size: clamp(32px, 4.5vw, 48px);
       font-weight: bold;
-      color: #FF0000;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.16);
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       line-height: 1.1;
-      padding: 8px 0 6px 0;
-      margin-bottom: 0;
-      margin-top: 12px;
+      padding: 10px 20px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
     }
+    
     .college-logo {
       width: clamp(85px, 25vw, 150px);
       height: clamp(85px, 25vw, 150px);
-      margin: 20px auto 15px auto;
-      border: 3px solid #8B0000;
+      margin: 10px auto 20px auto;
+      border: 4px solid #8B0000;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       background-color: #fff;
       object-fit: cover;
+      position: relative;
+      z-index: 2;
     }
+    
     .session {
       font-family: 'Courier New', Courier, monospace;
-      font-size: clamp(28px, 3.2vw, 35px);
+      font-size: clamp(26px, 3vw, 32px);
       font-weight: bold;
       color: #00008B;
       margin: 12px 0 0 0;
+      background: rgba(255,255,255,0.7);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
     }
+    
     .subject-title {
       font-family: 'Arial Black', Gadget, sans-serif;
-      font-size: clamp(28px, 3.7vw, 35px);
+      font-size: clamp(26px, 3.5vw, 32px);
       color: #006400;
       margin-top: 16px;
       margin-bottom: 5px;
+      background: rgba(255,255,255,0.7);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
     }
+    
     .project-file {
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      font-size: clamp(28px, 3.2vw, 35px);
+      font-size: clamp(26px, 3vw, 32px);
       color: #4B0082;
       margin-top: 14px;
+      background: rgba(255,255,255,0.7);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
     }
+    
     .subject-logo {
       display: none;
-      width: 540px;
+      width: 440px;
       height: 100px;
       object-fit: contain;
       margin: 7px auto 20px auto;
       border-radius: 8px;
       box-sizing: border-box;
     }
+    
     .details-container {
       display: flex;
       justify-content: space-between;
@@ -230,25 +322,28 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+    
     .submitted-to, .submitted-by {
       width: 46%;
       min-width: 180px;
       text-align: left;
       padding: 20px 15px 15px 15px;
-      background: rgba(178, 34, 34, 0.16);
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
       margin: 0 auto 0 auto;
       box-sizing: border-box;
       font-size: 1.5em;
-      color: #B22222;
+      color: #8B0000;
       font-weight: 600;
-      box-shadow: 0 1.5px 11px rgba(178, 34, 34, 0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       word-wrap: break-word;
       overflow-wrap: break-word;
+      border: 2px solid rgba(139, 0, 0, 0.2);
     }
+    
     h4 {
       font-family: 'Georgia', 'Times New Roman', Times, serif;
-      font-size: clamp(24px, 3vw, 28px);
+      font-size: clamp(22px, 2.8vw, 26px);
       color: #8B0000;
       margin-bottom: 16px;
       border-bottom: 2px solid #8B0000;
@@ -256,18 +351,21 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+    
     p {
       font-family: 'Candara', 'Calibri', sans-serif;
-      font-size: clamp(18px, 2.8vw, 21px);
+      font-size: clamp(18px, 2.5vw, 20px);
       line-height: 1.6;
       margin-bottom: 7px;
       color: #333;
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
+    
     b {
       color: #000;
     }
+    
     @media (max-width: 900px) {
       .wrapper {
         flex-direction: column;
@@ -275,20 +373,28 @@
         gap: 16px;
         padding: 14px 12px;
       }
+      
       .form-container,
       .page {
         max-width: 99vw;
         width: 100%;
       }
+      
       .details-container {
         flex-direction: column;
         gap: 16px;
       }
+      
       .submitted-to, .submitted-by {
         width: 96%;
         min-width: unset;
       }
+      
+      .circular-header {
+        height: 120px;
+      }
     }
+    
     @media (max-width: 600px) {
       .page {
         padding: 6vw 3vw;
@@ -296,13 +402,21 @@
         width: 100vw;
         max-width: 100vw;
       }
+      
       .details-container {
         gap: 10px;
       }
+      
       .submitted-to, .submitted-by {
         width: 100%;
       }
+      
+      .circular-header {
+        height: 100px;
+      }
     }
+
+
 .popup-overlay {
   display: none;  /* Hide by default */
   position: fixed;
@@ -388,14 +502,17 @@
   margin: 8px auto 20px auto;
   border-radius: 4px;
 }
+
   </style>
 </head>
 <body>
 <div id="mobilePopup" class="popup-overlay">
   <div class="popup-content">
-    <button class="close-popup" onclick="closePopup()"> X </button>
+    <button class="close-popup" onclick="closePopup()">X </button>
     <h2>Attention Mobile Users</h2>
-    <p>If you are using a mobile device, please <B>**SWITCH TO DESKTOP SITE** </B> for the best experience.</p>
+   
+    <p>If you are using a mobile device, please <B>**SWITCH TO DESKTOP SITE** </B> </p>
+     <h2 style="color : red"> For better layout & full features. </h2>
     <h3>How to enable Desktop Site:</h3>
     <hr class="section-divider">
 
@@ -404,10 +521,11 @@
       <li>Scroll Down</li>
       <li>Check or tap <b>"Desktop site"</b> option.</li>
       <li>The page will reload in desktop view.</li>
-      <li>Enjoy better layout & full features.</li>
+      
     </ul>
   </div>
 </div>
+
 <script>
 // Show popup automatically when page loads
 window.addEventListener('load', function() {
@@ -420,13 +538,17 @@ function closePopup() {
   document.getElementById('mobilePopup').style.display = 'none';
 }
 </script>
-  <div class="wrapper">
+
+
+
+
+<div class="wrapper">
     <div class="form-container">
       <h3>Fill your details from here</h3>
       <label for="session">Session:</label>
       <input type="text" id="session" value="2025-2026" />
       <label for="subject">Subject:</label>
-      <input type="text" id="subject" value="SOCIAL SCIENCE" />
+      <input type="text" id="subject" value="Data Structure" />
       <label for="projectFile">Project File:</label>
       <input type="text" id="projectFile" value="PROJECT FILE" />
       <label class="checkbox-label" for="showSubjectLogo">
@@ -451,24 +573,28 @@ function closePopup() {
     </div>
 
     <div class="page" id="projectPage">
-      <div>
+      <div class="circular-header">
+        <div class="circular-bg"></div>
         <div class="university-name">MAHATMA GANDHI KASHI VIDYAPITH</div>
-        <img
-          src="https://pbs.twimg.com/profile_images/1496004409356025857/f_hv-V07_400x400.jpg"
-          alt="College Logo"
-          class="college-logo"
-          id="collegeLogo"
-        />
-        <div class="session" id="page-session">SESSION:- 2025-2026</div>
-        <div class="subject-title" id="page-subject">SUBJECT : SOCIAL SCIENCE</div>
-        <div class="project-file" id="page-projectFile">PROJECT FILE</div>
-        <img alt="Subject Logo" class="subject-logo" id="subjectLogo" />
       </div>
+      
+      <img
+        src="https://pbs.twimg.com/profile_images/1496004409356025857/f_hv-V07_400x400.jpg"
+        alt="College Logo"
+        class="college-logo"
+        id="collegeLogo"
+      />
+      
+      <div class="session" id="page-session">SESSION:- 2025-2026</div>
+      <div class="subject-title" id="page-subject">SUBJECT : SOCIAL SCIENCE</div>
+      <div class="project-file" id="page-projectFile">PROJECT FILE</div>
+      <img alt="Subject Logo" class="subject-logo" id="subjectLogo" />
+      
       <div class="details-container">
         <div class="submitted-by">
           <h4>SUBMITTED BY-</h4>
-          <p id="page-studentName"><b>NAME:</b>ABCD</p>
-          <p id="page-className"><b>CLASS:</b> BCA Second Year, Semester-III</p>
+          <p id="page-studentName"><b>NAME:</b> ABCD</p>
+          <p id="page-className"><b>CLASS:</b> B.A. (Hons.) Political Science, Semester-III</p>
           <p id="page-rollNo"><b>ROLL NO:</b> 21035540029</p>
         </div>
         <div class="submitted-to">
@@ -529,6 +655,7 @@ function closePopup() {
 
     function reviewPage() {
       updatePageData();
+      alert("Page updated! Check the preview below.");
     }
 
     function downloadPDF() {
@@ -543,7 +670,7 @@ function closePopup() {
       projectPage.style.maxWidth  = '210mm';
       projectPage.style.width     = '210mm';
       projectPage.style.minHeight = '297mm';
-      projectPage.style.padding   = '18mm 12mm 18mm 12mm';
+      projectPage.style.padding   = '15mm 15mm 15mm 15mm';
 
       const opt = {
         margin: 0,
@@ -552,12 +679,22 @@ function closePopup() {
         html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
+      
+      // Show loading message
+      const originalText = document.getElementById('downloadBtn').innerText;
+      document.getElementById('downloadBtn').innerText = 'Generating PDF...';
+      document.getElementById('downloadBtn').disabled = true;
+      
       html2pdf().set(opt).from(projectPage).save().then(() => {
         // Restore style after PDF generation
         projectPage.style.maxWidth  = original.maxWidth;
         projectPage.style.width     = original.width;
         projectPage.style.minHeight = original.minHeight;
         projectPage.style.padding   = original.padding;
+        
+        // Restore button text
+        document.getElementById('downloadBtn').innerText = originalText;
+        document.getElementById('downloadBtn').disabled = false;
       });
     }
   </script>
