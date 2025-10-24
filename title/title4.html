@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MGKVP Project Title Page Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      max-width: 1440px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    
+    .form-container {
+      width: 370px;
+      background: white;
+      padding: 28px 24px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+      box-sizing: border-box;
+      border: 2px solid #e0e0e0;
+    }
+    
+    .form-container h3 {
+      text-align: center;
+      margin-top: 0;
+      color: #8B0000;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      border-bottom: 3px double #8B0000;
+      padding-bottom: 10px;
+    }
+    
+    .form-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+      font-size: 1.1em;
+    }
+    
+    .form-container input[type="text"],
+    .form-container input[type="file"] {
+      width: 96%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1.1em;
+      box-sizing: border-box;
+      transition: all 0.3s;
+    }
+    
+    .form-container input[type="text"]:focus {
+      border-color: #8B0000;
+      box-shadow: 0 0 8px rgba(139, 0, 0, 0.3);
+      outline: none;
+    }
+    
+    .form-container input[type="checkbox"] {
+      transform: scale(1.3);
+      margin-right: 8px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    
+    .checkbox-label {
+      font-size: 1.1em;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .form-container button {
+      flex: 1;
+      padding: 12px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    #reviewBtn { 
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    }
+    
+    #reviewBtn:hover { 
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    
+    #downloadBtn { 
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    }
+    
+    #downloadBtn:hover { 
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    /* FIXED PAGE DESIGN FOR A4 PDF */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #a1c4fd 100%);
+      padding: 20mm 25mm;
+      margin-bottom: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      font-size: 1.15em;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+
+    /* NEW CSS IMAGE BORDER - ELEGANT DESIGN */
+
+
+    /* ALTERNATIVE BORDER DESIGN (COMMENT OUT THE ABOVE AND UNCOMMENT BELOW FOR DIFFERENT LOOK) */
+    
+    .page-border {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      pointer-events: none;
+      z-index: 1;
+      border: 8px double #ff6b6b;
+      border-radius: 15px;
+      box-shadow: 
+        inset 0 0 25px rgba(255,107,107,0.2),
+        0 0 25px rgba(0,0,0,0.15);
+    }
+    
+    
+    .university-name {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(36px, 4.5vw, 52px);
+      font-weight: bold;
+      color: #000;
+      text-align: center;
+      line-height: 1.2;
+      letter-spacing: 1.5px;
+      padding: 15px 25px;
+      display: inline-block;
+      margin-top: 10px;
+      text-shadow: 5px 5px 5px rgba(255,0,0,0.3), 5px 5px 5px rgba(255,77,77,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .university-name::after {
+      content: "";
+      position: absolute;
+      bottom: 5px;
+      left: 30%;
+      right: 30%;
+      height: 3px;
+      background: #000;
+      border-radius: 2px;
+    }
+    
+    .college-logo {
+      width: clamp(90px, 25vw, 160px);
+      height: clamp(90px, 25vw, 160px);
+      margin: 15px auto 20px auto;
+      border: 4px solid #ff6b6b;
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      background: white;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .session {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(22px, 2.8vw, 28px);
+      font-weight: bold;
+      color: #e74c3c;
+      margin: 10px 0 0 0;
+      background: rgba(255,255,255,0.85);
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 2px solid #e74c3c;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .subject-title {
+      font-family: 'Arial Black', Gadget, sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      color: #2980b9;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      background: rgba(255,255,255,0.85);
+      display: inline-block;
+      padding: 8px 25px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 2px solid #2980b9;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .project-file {
+      font-family: 'Impact', 'Haettenschweiler', sans-serif;
+      font-size: clamp(28px, 3.5vw, 38px);
+      background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 15px;
+      background-color: rgba(255,255,255,0.9);
+      display: inline-block;
+      padding: 10px 30px;
+      border-radius: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      border: 3px solid #9b59b6;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .project-file::before, .project-file::after {
+      content: "";
+      color: #9b59b6;
+      margin: 0 12px;
+      font-size: 18px;
+    }
+    
+    .subject-logo {
+      display: none;
+      width: 300px;
+      height: 75px;
+      object-fit: contain;
+      margin: 12px auto 15px auto;
+      border-radius: 12px;
+      box-sizing: border-box;
+      border: 3px solid #ff6b6b;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.9);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .details-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      gap: 15px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .submitted-by, .submitted-to {
+      width: 48%;
+      min-width: 200px;
+      text-align: left;
+      margin: 8px auto;
+      font-size: 1.15em;
+      color: #2c3e50;
+      font-weight: 600;
+      padding: 0;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .submitted-by h4, .submitted-to h4 {
+      font-size: 1.25em;
+      color: #e67e22;
+      font-weight: bold;
+      border-bottom: 2px solid #e67e22;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+
+    .submitted-by p, .submitted-to p {
+      margin: 4px 0;
+      color: #34495e;
+      font-size: 1.05em;
+      line-height: 1.5;
+    }
+    
+    h4 {
+      font-family: 'Georgia', 'Times New Roman', Times, serif;
+      font-size: clamp(20px, 2.5vw, 24px);
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 6px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    p {
+      font-family: 'Candara', 'Calibri', sans-serif;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      margin-bottom: 6px;
+      color: #34495e;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      padding-left: 8px;
+    }
+    
+    b {
+      color: #2c3e50;
+    }
+    
+    .page-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 250mm;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    
+    .submission-content {
+      margin-top: auto;
+      padding-bottom: 10px;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 14px 12px;
+      }
+      
+      .form-container,
+      .page {
+        max-width: 99vw;
+        width: 100%;
+      }
+      
+      .page {
+        width: 100%;
+        min-height: 70vh;
+      }
+      
+      .details-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .submitted-to, .submitted-by {
+        width: 96%;
+        min-width: unset;
+      }
+      
+      .subject-logo {
+        width: 250px;
+        height: 65px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .page {
+        padding: 8vw 5vw;
+        min-height: 70vh;
+        width: 100vw;
+        max-width: 100vw;
+      }
+      
+      .details-container {
+        gap: 12px;
+      }
+      
+      .submitted-to, .submitted-by {
+        width: 100%;
+      }
+      
+      .subject-logo {
+        width: 220px;
+        height: 55px;
+      }
+      
+      .page-border {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border-width: 8px;
+      }
+    }
+
+    /* PDF SPECIFIC STYLES */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .wrapper {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .page {
+        box-shadow: none;
+        margin: 0;
+        padding: 20mm 25mm;
+        width: 210mm;
+        height: 297mm;
+      }
+      
+      .form-container {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="form-container">
+      <h3>Fill your details from here</h3>
+      <label for="session">Session:</label>
+      <input type="text" id="session" value="2025-2026" />
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" value="Data Structure" />
+      <label for="projectFile">Project File:</label>
+      <input type="text" id="projectFile" value="PROJECT FILE" />
+      <label class="checkbox-label" for="showSubjectLogo">
+        <input type="checkbox" id="showSubjectLogo" /> Show Subject Logo
+      </label>
+      <div id="uploadSubjectLogoDiv" style="display:none;">
+        <label for="subjectLogoUpload">Upload Subject Logo:</label>
+        <input type="file" id="subjectLogoUpload" accept="image/*" />
+      </div>
+      <label for="teacherName">Submitted To:</label>
+      <input type="text" id="teacherName" value="DR. VISHAL KUMAR SINGH" />
+      <label for="studentName">Submitted By:</label>
+      <input type="text" id="studentName" value="ABCD" />
+      <label for="className">Course/Class:</label>
+      <input type="text" id="className" value="BCA Second Year, Semester-III" />
+      <label for="rollNo">Roll No.:</label>
+      <input type="text" id="rollNo" value="21035540029" />
+      <div class="button-group">
+        <button id="reviewBtn" onclick="reviewPage()">Review</button>
+        <button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
+      </div>
+    </div>
+
+    <div class="page" id="projectPage">
+      <div class="page-border"></div>
+
+      <div class="page-content">
+        <div class="main-content">
+          <div class="university-name">MAHATMA GANDHI KASHI VIDYAPEETH</div>
+          
+          <img
+            src="https://pbs.twimg.com/profile_images/1496004409356025857/f_hv-V07_400x400.jpg"
+            alt="College Logo"
+            class="college-logo"
+            id="collegeLogo"
+          />
+          
+          <div class="session" id="page-session">SESSION:- 2025-2026</div>
+          <div class="subject-title" id="page-subject">SUBJECT : DATA STRUCTURE</div>
+          <div class="project-file" id="page-projectFile">PROJECT FILE</div>
+          <img alt="Subject Logo" class="subject-logo" id="subjectLogo" />
+        </div>
+        
+        <div class="submission-content">
+          <div class="details-container">
+            <div class="submitted-by">
+              <h4>SUBMITTED BY-</h4>
+              <p id="page-studentName"><b>NAME:</b> ABCD</p>
+              <p id="page-className"><b>CLASS:</b> BCA Second Year, Semester-III</p>
+              <p id="page-rollNo"><b>ROLL NO:</b> 21035540029</p>
+            </div>
+            <div class="submitted-to">
+              <h4>SUBMITTED TO -</h4>
+              <p id="page-teacherName">DR. VISHAL KUMAR SINGH</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const showSubjectLogoCheckbox = document.getElementById('showSubjectLogo');
+    const uploadSubjectLogoDiv = document.getElementById('uploadSubjectLogoDiv');
+    const subjectLogoImg = document.getElementById('subjectLogo');
+    const subjectLogoUpload = document.getElementById('subjectLogoUpload');
+    const projectPage = document.getElementById('projectPage');
+
+    showSubjectLogoCheckbox.addEventListener('change', () => {
+      if (showSubjectLogoCheckbox.checked) {
+        uploadSubjectLogoDiv.style.display = 'block';
+        subjectLogoImg.style.display = subjectLogoImg.src ? 'block' : 'none';
+      } else {
+        uploadSubjectLogoDiv.style.display = 'none';
+        subjectLogoImg.style.display = 'none';
+        subjectLogoImg.src = '';
+      }
+    });
+
+    subjectLogoUpload && subjectLogoUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          subjectLogoImg.src = event.target.result;
+          subjectLogoImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function updatePageData() {
+      document.getElementById('page-session').innerText =
+        'SESSION:- ' + document.getElementById('session').value;
+      document.getElementById('page-subject').innerText =
+        'SUBJECT : ' + document.getElementById('subject').value;
+      document.getElementById('page-projectFile').innerText =
+        document.getElementById('projectFile').value;
+
+      document.getElementById('page-teacherName').innerText =
+        document.getElementById('teacherName').value;
+      document.getElementById('page-studentName').innerHTML =
+        '<b>NAME:</b> ' + document.getElementById('studentName').value;
+      document.getElementById('page-className').innerHTML =
+        '<b>CLASS:</b> ' + document.getElementById('className').value;
+      document.getElementById('page-rollNo').innerHTML =
+        '<b>ROLL NO:</b> ' + document.getElementById('rollNo').value;
+    }
+
+    function reviewPage() {
+      updatePageData();
+      alert("Page updated! Check the preview below.");
+    }
+
+    function downloadPDF() {
+      updatePageData();
+      
+      const opt = {
+        margin: [0, 0, 0, 0],
+        filename: 'MGKVP_Project_Title_Page.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+          width: 794, // 210mm at 96 DPI
+          height: 1123 // 297mm at 96 DPI
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait'
+        }
+      };
+      
+      // Show loading message
+      const originalText = document.getElementById('downloadBtn').innerText;
+      document.getElementById('downloadBtn').innerText = 'Generating PDF...';
+      document.getElementById('downloadBtn').disabled = true;
+      
+      // Hide form container temporarily for PDF generation
+      const formContainer = document.querySelector('.form-container');
+      const originalDisplay = formContainer.style.display;
+      formContainer.style.display = 'none';
+      
+      html2pdf().set(opt).from(projectPage).save().then(() => {
+        // Restore button text and form container
+        document.getElementById('downloadBtn').innerText = originalText;
+        document.getElementById('downloadBtn').disabled = false;
+        formContainer.style.display = originalDisplay;
+      });
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      updatePageData();
+    };
+  </script>
+</body>
+</html>
