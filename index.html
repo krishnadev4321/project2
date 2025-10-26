@@ -223,6 +223,27 @@
   100% { transform: rotate(0deg); }
 }
 
+#wave-hand {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 28px;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+#wave-hand.show {
+  opacity: 1;
+  animation: wave 2s ease-in-out;
+}
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
 /* Chatbot */
 #chatbot-avatar {
   position: fixed;
@@ -246,6 +267,7 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   flex-direction: column;
   z-index: 1002;
+  overflow: hidden;           /* Hide scrollbars/borders overflow */
 }
 #chatbox.show { display: flex; }
 
@@ -259,21 +281,27 @@
   border-top-right-radius: 15px;
 }
 
+/* Chat messages area, always fills space */
 #messages {
-  flex: 1;
+  flex: 1;                           /* ? This makes messages area grow to fill */
   padding: 10px;
   overflow-y: auto;
   font-size: 14px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 #messages div {
   margin-bottom: 8px;
 }
 
+/* Input container, always at bottom */
 #userInputContainer {
   display: flex;
   border-top: 1px solid #334155;
+  background: #1e293b;
 }
 #userInput {
   flex: 1;
@@ -296,6 +324,7 @@
   transition: background 0.3s;
 }
 #sendBtn:hover { background: #3730a3; }
+
     </style>
   </head>
   <body class="bg-slate-900 text-slate-200">
@@ -1297,6 +1326,76 @@ We've brought everything you need for the BCA course together in one centralized
         </section>
       </main>
 
+      <!-- Chatbot Avatar -->
+<!-- Chatbot Avatar -->
+<div id="chatbot-avatar" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer; z-index: 1000;" onclick="toggleChat()">
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" style="width: 64px; height:64px; border-radius:50%; box-shadow:0 4px 8px rgba(0,0,0,0.3);" alt="chatbot">
+  <div id="wave-hand" style="position:absolute; top:-50px; left:-10px; font-size:24px; opacity:0; transition:all 0.3s;"> <img src="images/hand.png"> </div>
+</div>
+
+<!-- Chat Window -->
+<div id="chatbox">
+  <div id="chat-header">BCA Guide Bot</div>
+  <div id="messages"></div>
+  <div id="userInputContainer">
+    <input id="userInput" placeholder="Type your message..."
+      onkeydown="if(event.key==='Enter') sendMessage()">
+    <button id="sendBtn" onclick="sendMessage()">></button>
+  </div>
+</div>
+<script>
+  // Toggle chatbox
+  function toggleChat() {
+    const chatbox = document.getElementById("chatbox");
+    chatbox.style.display = (chatbox.style.display === "flex") ? "none" : "flex";
+  }
+
+  // Wave animation
+  function waveAnimation() {
+    const wave = document.getElementById("wave-hand");
+    wave.style.opacity = 1;
+    wave.style.transform = "rotate(0deg)";
+    let degs = [0, 14, -8, 14, -4, 10, 0];
+    let i = 0;
+    const interval = setInterval(() => {
+      wave.style.transform = `rotate(${degs[i]}deg)`;
+      i++;
+      if(i >= degs.length) clearInterval(interval);
+    }, 300);
+    setTimeout(() => wave.style.opacity = 0, 2500);
+  }
+  setTimeout(waveAnimation, 500);
+  setInterval(waveAnimation, 3000);
+
+
+  // Send message
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const messages = document.getElementById("messages");
+
+    const userDiv = document.createElement("div");
+    userDiv.style.alignSelf = "flex-end";
+    userDiv.style.background = "#4f46e5";
+    userDiv.style.padding = "6px 10px";
+    userDiv.style.borderRadius = "12px";
+    userDiv.innerText = msg;
+    messages.appendChild(userDiv);
+
+    const botDiv = document.createElement("div");
+    botDiv.style.alignSelf = "flex-start";
+    botDiv.style.background = "#334155";
+    botDiv.style.padding = "6px 10px";
+    botDiv.style.borderRadius = "12px";
+    botDiv.innerText = "(reply coming soon...)";
+    messages.appendChild(botDiv);
+
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+  }
+</script>
       <!-- Footer -->
       <footer class="bg-slate-900 border-t border-slate-800 mt-16">
         <div

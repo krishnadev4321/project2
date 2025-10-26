@@ -1,0 +1,192 @@
+<div id="chatbot-avatar" onclick="toggleChat()">
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="chatbot" />
+  
+</div>
+
+<!-- Chatbox: default hidden -->
+<div id="chatbox" style="display: none;">
+  <div id="chat-header">BCA Guide Bot</div>
+  <div id="messages"></div>
+  <div id="userInputContainer">
+    <input id="userInput" placeholder="Type your message..."
+      onkeydown="if(event.key==='Enter') sendMessage()">
+    <button id="sendBtn" onclick="sendMessage()">></button>
+  </div>
+</div>
+
+<script>
+  // Toggle chatbox
+  function toggleChat() {
+    const chatbox = document.getElementById("chatbox");
+    chatbox.style.display = (chatbox.style.display === "flex") ? "none" : "flex";
+  }
+
+  // Wave animation
+  function waveAnimation() {
+    const wave = document.getElementById("wave-hand");
+    wave.style.opacity = 1;
+    wave.style.transform = "rotate(0deg)";
+    let degs = [0, 14, -8, 14, -4, 10, 0];
+    let i = 0;
+    const interval = setInterval(() => {
+      wave.style.transform = `rotate(${degs[i]}deg)`;
+      i++;
+      if(i >= degs.length) clearInterval(interval);
+    }, 300);
+    setTimeout(() => wave.style.opacity = 0, 2500);
+  }
+  setTimeout(waveAnimation, 3000);
+
+  // Send message
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const messages = document.getElementById("messages");
+
+    const userDiv = document.createElement("div");
+    userDiv.style.alignSelf = "flex-end";
+    userDiv.style.background = "#4f46e5";
+    userDiv.style.padding = "6px 10px";
+    userDiv.style.borderRadius = "12px";
+    userDiv.innerText = msg;
+    messages.appendChild(userDiv);
+
+    const botDiv = document.createElement("div");
+    botDiv.style.alignSelf = "flex-start";
+    botDiv.style.background = "#334155";
+    botDiv.style.padding = "6px 10px";
+    botDiv.style.borderRadius = "12px";
+    botDiv.innerText = "(reply coming soon...)";
+    messages.appendChild(botDiv);
+
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+  }
+</script>
+   /* Custom focus rings and input styles */
+
+     #wave-hand {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 28px;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+#wave-hand.show {
+  opacity: 1;
+  animation: wave 2s ease-in-out;
+}
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#wave-hand {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 28px;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+#wave-hand.show {
+  opacity: 1;
+  animation: wave 2s ease-in-out;
+}
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Chatbot */
+#chatbot-avatar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+#chatbot-avatar img { width: 60px; height: 60px; border-radius: 50%; }
+
+/* Chat window */
+#chatbox {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 320px;
+  height: 400px;
+  background: #1e293b;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  flex-direction: column;
+  z-index: 1002;
+  overflow: hidden;           /* Hide scrollbars/borders overflow */
+  display: flex;              /* Ensure flex context always enabled */
+}
+#chatbox.show { display: flex; }
+
+#chat-header {
+  background: #4f46e5;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Chat messages area, always fills space */
+#messages {
+  flex: 1;                           /* ? This makes messages area grow to fill */
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#messages div {
+  margin-bottom: 8px;
+}
+
+/* Input container, always at bottom */
+#userInputContainer {
+  display: flex;
+  border-top: 1px solid #334155;
+  background: #1e293b;
+}
+#userInput {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: #334155;
+  color: #fff;
+  font-size: 14px;
+  border-bottom-left-radius: 15px;
+}
+#sendBtn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-bottom-right-radius: 15px;
+  transition: background 0.3s;
+}
+#sendBtn:hover { background: #3730a3; }
