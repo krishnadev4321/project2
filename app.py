@@ -2,18 +2,23 @@
 from flask import Flask, request, jsonify, send_from_directory
 import requests
 import os
-from collections import defaultdict  # <-- ye add karo
+from collections import defaultdict
+from flask_cors import CORS
 
-# Root folder as static folder
+# Flask app
 app = Flask(__name__, static_folder="")
+CORS(app)  # allow all origins
 
-# Gemini API setup
-GEMINI_API_KEY = "AIzaSyBHyiMX-EZwVo4G_NSOGGMu4itjKoguRmA"
+# -------------------------------
+# Gemini API setup (hardcoded key)
+# -------------------------------
+GEMINI_API_KEY = "AIzaSyBHyiMX-EZwVo4G_NSOGGMu4itjKoguRmA"  # <- direct key
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
 
 # Track IP message count
 ip_count = defaultdict(int)
 MAX_MESSAGES = 20  # per IP limit
+
 # Serve image files
 @app.route("/images/<path:filename>")
 def serve_images(filename):
@@ -33,38 +38,43 @@ def chat():
     user_input = request.json.get("message")
     if not user_input:
         return jsonify({"error": "No message provided"}), 400
-    
+
     user_ip = request.remote_addr
     ip_count[user_ip] += 1
     print(f"[LOG] IP {user_ip} message count: {ip_count[user_ip]}")
 
+    if ip_count[user_ip] > MAX_MESSAGES:
+        return jsonify({"reply": f"Limit reached: {MAX_MESSAGES} messages per day per device."})
+
+    # Prepare Gemini API request
     data = {
-    "contents": [{
-        "parts": [{
-            "text": f"""
+        "contents": [{
+            "parts": [{
+                "text": f"""
 You are a BCA Guide assistant for students using the BCA Guide website. 
-1. agar student bca se related kuch bhi puche to usse hamesh Bca guide ki website ka hi naam batana ki aap yaha se taiayrri kar sakte hai isme saare pyqs and syllabus assignment templates hai jo ki aapki bca ki journey ko aasan bana sakte hai. mtlb issi tarah karke bolna
-2. agar user bca se unrelated puche to ussse uksa jawab dena .
-a. agar koi student kisi bhi language ka code mange to usse dena dena but short me .
-3. Keep responses extra short, friendly, and focused on how students can prepare using this website.
-4. User jis language me baat kare tum uss language me baat karo.
-5. Never give very long answers. 
+1. agar student BCA se related kuch bhi puche, to hamesh BCA Guide ka naam batana aur website ke features explain karna (PYQs, syllabus, assignments, templates). 
+2. Agar user unrelated question puche, simple short answer dena. 
+3. Agar student kisi programming language ka code maange, short me example dena. 
+4. Keep responses short, friendly, and relevant.
+5. Reply in the same language as user.
 6. Answer the user's question: {user_input}
 """
+            }]
         }]
-    }]
-}
+    }
 
     headers = {"Content-Type": "application/json"}
 
-    response = requests.post(GEMINI_API_URL, headers=headers, json=data)
-
-    if response.status_code != 200:
-        print("Error:", response.status_code, response.text)
-        return jsonify({"reply": "Server error. Please try again."})
-
-    res_json = response.json()
     try:
+        response = requests.post(GEMINI_API_URL, headers=headers, json=data)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print("Error calling Gemini API:", e)
+        return jsonify({"reply": "Server error. Please try again later."})
+
+    # Extract bot reply
+    try:
+        res_json = response.json()
         bot_reply = res_json["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
         print("Error extracting reply:", e)
@@ -74,4 +84,5 @@ a. agar koi student kisi bhi language ka code mange to usse dena dena but short 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
