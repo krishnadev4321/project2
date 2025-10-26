@@ -1344,58 +1344,96 @@ We've brought everything you need for the BCA course together in one centralized
   </div>
 </div>
 <script>
-  // Toggle chatbox
-  function toggleChat() {
-    const chatbox = document.getElementById("chatbox");
-    chatbox.style.display = (chatbox.style.display === "flex") ? "none" : "flex";
+const BACKEND_URL = "https://project3-backend-siwj.onrender.com/chat";
+
+// Chatbox open/close (best-practice toggle with .show class)
+function toggleChat() {
+  const chatbox = document.getElementById("chatbox");
+  if (chatbox.classList.contains("show")) {
+    chatbox.classList.remove("show");
+    chatbox.style.display = "none";
+  } else {
+    chatbox.classList.add("show");
+    chatbox.style.display = "flex";
   }
+}
 
-  // Wave animation
-  function waveAnimation() {
-    const wave = document.getElementById("wave-hand");
-    wave.style.opacity = 1;
-    wave.style.transform = "rotate(0deg)";
-    let degs = [0, 14, -8, 14, -4, 10, 0];
-    let i = 0;
-    const interval = setInterval(() => {
-      wave.style.transform = `rotate(${degs[i]}deg)`;
-      i++;
-      if(i >= degs.length) clearInterval(interval);
-    }, 300);
-    setTimeout(() => wave.style.opacity = 0, 2500);
+// Hand Wave Animation — every 3s
+function waveAnimation() {
+  const wave = document.getElementById("wave-hand");
+  if (!wave) return;
+  wave.style.opacity = 1;
+  wave.style.transform = "rotate(0deg)";
+  let degs = [0, 14, -8, 14, -4, 10, 0];
+  let i = 0;
+  const interval = setInterval(() => {
+    wave.style.transform = `rotate(${degs[i]}deg)`;
+    i++;
+    if (i >= degs.length) clearInterval(interval);
+  }, 300);
+  setTimeout(() => wave.style.opacity = 0, 2500);
+}
+setTimeout(waveAnimation, 500);
+setInterval(waveAnimation, 3000);
+
+// Send Message and handle Gemini bot reply
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  const messages = document.getElementById("messages");
+
+  // User Message
+  const userDiv = document.createElement("div");
+  userDiv.style.alignSelf = "flex-end";
+  userDiv.style.background = "#4f46e5";
+  userDiv.style.padding = "6px 10px";
+  userDiv.style.borderRadius = "12px";
+  userDiv.innerText = msg;
+  messages.appendChild(userDiv);
+
+  // Bot Message (loading state)
+  const botDiv = document.createElement("div");
+  botDiv.style.alignSelf = "flex-start";
+  botDiv.style.background = "#334155";
+  botDiv.style.padding = "6px 10px";
+  botDiv.style.borderRadius = "12px";
+  botDiv.innerText = "Bot is typing...";
+  messages.appendChild(botDiv);
+
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+
+  // Call backend API for reply
+  try {
+    const res = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: msg })
+    });
+    if (!res.ok) throw new Error("Network/API error");
+    const data = await res.json();
+    botDiv.innerText = data.reply || "No response from bot.";
+  } catch (err) {
+    botDiv.innerText = "Sorry, server error! Try again.";
   }
-  setTimeout(waveAnimation, 500);
-  setInterval(waveAnimation, 3000);
+  messages.scrollTop = messages.scrollHeight;
+}
 
-
-  // Send message
-  function sendMessage() {
-    const input = document.getElementById("userInput");
-    const msg = input.value.trim();
-    if (!msg) return;
-
-    const messages = document.getElementById("messages");
-
-    const userDiv = document.createElement("div");
-    userDiv.style.alignSelf = "flex-end";
-    userDiv.style.background = "#4f46e5";
-    userDiv.style.padding = "6px 10px";
-    userDiv.style.borderRadius = "12px";
-    userDiv.innerText = msg;
-    messages.appendChild(userDiv);
-
-    const botDiv = document.createElement("div");
-    botDiv.style.alignSelf = "flex-start";
-    botDiv.style.background = "#334155";
-    botDiv.style.padding = "6px 10px";
-    botDiv.style.borderRadius = "12px";
-    botDiv.innerText = "(reply coming soon...)";
-    messages.appendChild(botDiv);
-
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
+// Bonus: Enter key triggers sendMessage
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("userInput");
+  if (input) {
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") sendMessage();
+    });
   }
+});
 </script>
+
       <!-- Footer -->
       <footer class="bg-slate-900 border-t border-slate-800 mt-16">
         <div
