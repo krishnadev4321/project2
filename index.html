@@ -60,7 +60,7 @@
    
     <script src="https://cdn.tailwindcss.com"></script>
 
-     <link rel="icon" type="image/png" href="images/icon2.png" />
+<link rel="icon" type="image/png" href="/images/icon2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin />
     <link
@@ -201,6 +201,101 @@
   100%{text-shadow:0 0 15px #00ffaa,0 0 30px #00ffaa,0 0 45px #00ffaa,0 0 60px #00ffaa;}
 }
       /* Custom focus rings and input styles */
+
+     #wave-hand {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 28px;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+#wave-hand.show {
+  opacity: 1;
+  animation: wave 2s ease-in-out;
+}
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Chatbot */
+#chatbot-avatar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+#chatbot-avatar img { width: 60px; height: 60px; border-radius: 50%; }
+
+/* Chat window */
+#chatbox {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 320px;
+  height: 400px;
+  background: #1e293b;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  flex-direction: column;
+  z-index: 1002;
+}
+#chatbox.show { display: flex; }
+
+#chat-header {
+  background: #4f46e5;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: white;
+}
+
+#messages div {
+  margin-bottom: 8px;
+}
+
+#userInputContainer {
+  display: flex;
+  border-top: 1px solid #334155;
+}
+#userInput {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: #334155;
+  color: #fff;
+  font-size: 14px;
+  border-bottom-left-radius: 15px;
+}
+#sendBtn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-bottom-right-radius: 15px;
+  transition: background 0.3s;
+}
+#sendBtn:hover { background: #3730a3; }
     </style>
   </head>
   <body class="bg-slate-900 text-slate-200">
@@ -255,7 +350,9 @@
       -> Assignment template section added On Home Page<br>
       -> All Semester 2 PYQs uploaded.<br>
       -> Notes up to Semester 4 have been uploaded. <br>
-      -> Servers is active for 24x7.
+      -> Servers is active for 24x7.<br>
+      <strong class="glow-text" style="font-size:1.19em;"> Smart AI Chatbot has been added  </strong><br>
+      -> At the Bottom Right Corner .<br>
 
     </div>
   </div>
@@ -1200,7 +1297,100 @@ We've brought everything you need for the BCA course together in one centralized
           </section>
         </section>
       </main>
+<!-- Chatbot Avatar -->
+<!-- Chatbot Avatar -->
+<div id="chatbot-avatar">
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="chatbot" />
+  <div id="wave-hand">
+        <img src="images/hand.png" alt="wave hand" style="width:50px; height:50px;">
+ </div>
+</div>
 
+<!-- Chat Window -->
+<div id="chatbox">
+  <div id="chat-header">BCA Guide Bot</div>
+  <div id="messages"></div>
+  <div id="userInputContainer">
+    <input id="userInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter') sendMessage()">
+    <button id="sendBtn"> > </button>
+  </div>
+</div>
+
+
+<script>
+// Elements
+const avatar = document.getElementById("chatbot-avatar");
+const chatbox = document.getElementById("chatbox");
+const wave = document.getElementById("wave-hand");
+const input = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+const messages = document.getElementById("messages");
+
+// Wave hand animation
+setTimeout(() => {
+  wave.classList.add("show");
+  setTimeout(() => wave.classList.remove("show"), 2500);
+}, 3000);
+
+// Toggle chatbox on avatar click
+avatar.addEventListener("click", () => {
+  chatbox.classList.toggle("show");
+});
+
+// Send message function
+async function sendMessage() {
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  // Display user message
+  const userMsg = document.createElement("div");
+  userMsg.style.textAlign = "right";
+  userMsg.innerHTML = `<span style="background:#4f46e5;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">${msg}</span>`;
+  messages.appendChild(userMsg);
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+
+  const botMsg = document.createElement("div");
+  botMsg.style.textAlign = "left";
+  botMsg.innerHTML = `<span style="background:#334155;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">Typing...</span>`;
+  messages.appendChild(botMsg);
+  messages.scrollTop = messages.scrollHeight;
+
+  // Call Flask backend
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg })
+    });
+
+    const data = await res.json();
+
+    // Display bot reply
+    const botMsg = document.createElement("div");
+    botMsg.style.textAlign = "left";
+    botMsg.innerHTML = `<span style="background:#334155;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">${data.reply}</span>`;
+    messages.appendChild(botMsg);
+    messages.scrollTop = messages.scrollHeight;
+  } catch (err) {
+    console.error(err);
+    const botMsg = document.createElement("div");
+    botMsg.style.textAlign = "left";
+    botMsg.innerHTML = `<span style="background:#334155;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">Error: Could not reach server</span>`;
+    messages.appendChild(botMsg);
+    messages.scrollTop = messages.scrollHeight;
+  }
+}
+
+// Trigger send on button click
+sendBtn.addEventListener("click", sendMessage);
+
+// Optional: trigger send on Enter key
+input.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") sendMessage();
+});
+
+</script>
       <!-- Footer -->
       <footer class="bg-slate-900 border-t border-slate-800 mt-16">
         <div
