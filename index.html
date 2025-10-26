@@ -60,7 +60,7 @@
    
     <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="icon" type="image/png" href="/images/icon2.png">
+<link rel="icon" type="image/png" href="images/icon2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin />
     <link
@@ -351,8 +351,7 @@
       -> All Semester 2 PYQs uploaded.<br>
       -> Notes up to Semester 4 have been uploaded. <br>
       -> Servers is active for 24x7.<br>
-      <strong class="glow-text" style="font-size:1.19em;"> Smart AI Chatbot has been added  </strong><br>
-      -> At the Bottom Right Corner .<br>
+      
 
     </div>
   </div>
@@ -1297,100 +1296,7 @@ We've brought everything you need for the BCA course together in one centralized
           </section>
         </section>
       </main>
-<!-- Chatbot Avatar -->
-<!-- Chatbot Avatar -->
-<div id="chatbot-avatar">
-  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="chatbot" />
-  <div id="wave-hand">
-        <img src="images/hand.png" alt="wave hand" style="width:50px; height:50px;">
- </div>
-</div>
 
-<!-- Chat Window -->
-<div id="chatbox">
-  <div id="chat-header">BCA Guide Bot</div>
-  <div id="messages"></div>
-  <div id="userInputContainer">
-    <input id="userInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter') sendMessage()">
-    <button id="sendBtn"> > </button>
-  </div>
-</div>
-
-
-<script>
-// Elements
-const avatar = document.getElementById("chatbot-avatar");
-const chatbox = document.getElementById("chatbox");
-const wave = document.getElementById("wave-hand");
-const input = document.getElementById("userInput");
-const sendBtn = document.getElementById("sendBtn");
-const messages = document.getElementById("messages");
-
-// Wave hand animation
-setTimeout(() => {
-  wave.classList.add("show");
-  setTimeout(() => wave.classList.remove("show"), 2500);
-}, 3000);
-
-// Toggle chatbox on avatar click
-avatar.addEventListener("click", () => {
-  chatbox.classList.toggle("show");
-});
-
-// Send message function
-async function sendMessage() {
-  const msg = input.value.trim();
-  if (!msg) return;
-
-  // Display user message
-  const userMsg = document.createElement("div");
-  userMsg.style.textAlign = "right";
-  userMsg.innerHTML = `<span style="background:#4f46e5;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">${msg}</span>`;
-  messages.appendChild(userMsg);
-  input.value = "";
-  messages.scrollTop = messages.scrollHeight;
-
-  const botMsg = document.createElement("div");
-  botMsg.style.textAlign = "left";
-  botMsg.innerHTML = `<span style="background:#334155;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">Typing...</span>`;
-  messages.appendChild(botMsg);
-  messages.scrollTop = messages.scrollHeight;
-
-  // Call Flask backend
-  try {
-    const res = await fetch("/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: msg })
-    });
-
-    const data = await res.json();
-
-    // Display bot reply
-    const botMsg = document.createElement("div");
-    botMsg.style.textAlign = "left";
-    botMsg.innerHTML = `<span style="background:#334155;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">${data.reply}</span>`;
-    messages.appendChild(botMsg);
-    messages.scrollTop = messages.scrollHeight;
-  } catch (err) {
-    console.error(err);
-    const botMsg = document.createElement("div");
-    botMsg.style.textAlign = "left";
-    botMsg.innerHTML = `<span style="background:#334155;padding:5px 10px;border-radius:10px;display:inline-block;color:white;">Error: Could not reach server</span>`;
-    messages.appendChild(botMsg);
-    messages.scrollTop = messages.scrollHeight;
-  }
-}
-
-// Trigger send on button click
-sendBtn.addEventListener("click", sendMessage);
-
-// Optional: trigger send on Enter key
-input.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") sendMessage();
-});
-
-</script>
       <!-- Footer -->
       <footer class="bg-slate-900 border-t border-slate-800 mt-16">
         <div
