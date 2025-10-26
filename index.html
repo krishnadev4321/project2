@@ -1375,7 +1375,7 @@ function waveAnimation() {
     i++;
     if (i >= degs.length) clearInterval(interval);
   }, 300);
-  setTimeout(() => wave.style.opacity = 0, 2500);
+  setTimeout(() => (wave.style.opacity = 0), 2500);
 }
 setTimeout(waveAnimation, 500);
 setInterval(waveAnimation, 3000);
@@ -1413,16 +1413,19 @@ async function sendMessage() {
   try {
     const res = await fetch(BACKEND_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: msg })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg }),
     });
-    if (!res.ok) throw new Error("Network/API error");
     const data = await res.json();
-    botDiv.innerText = data.reply || "No response from bot.";
+
+    if (!res.ok) {
+      // Server error ?? ?? JSON ??? message ?? ?? ?????, ???? ?? generic error
+      botDiv.innerText = data.reply || `Error: ${res.status}`;
+    } else {
+      botDiv.innerText = data.reply || "No response from bot.";
+    }
   } catch (err) {
-    botDiv.innerText = "Sorry, server error! Try again.";
+    botDiv.innerText = "Sorry, network error! Try again.";
   }
   messages.scrollTop = messages.scrollHeight;
 }
@@ -1431,11 +1434,12 @@ async function sendMessage() {
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("userInput");
   if (input) {
-    input.addEventListener("keydown", function(e) {
+    input.addEventListener("keydown", function (e) {
       if (e.key === "Enter") sendMessage();
     });
   }
 });
+
 </script>
 
       <!-- Footer -->
