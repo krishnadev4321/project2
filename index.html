@@ -1399,6 +1399,14 @@ function waveAnimation() {
 setTimeout(waveAnimation, 500);
 setInterval(waveAnimation, 3000);
 
+// Generate or get deviceId from localStorage
+function getDeviceId() {
+  if (!localStorage.deviceId) {
+    localStorage.deviceId = 'dev_' + Date.now() + '_' + Math.random().toString(36).substr(2, 10);
+  }
+  return localStorage.deviceId;
+}
+
 // Send Message and handle Gemini bot reply
 async function sendMessage() {
   const input = document.getElementById("userInput");
@@ -1428,17 +1436,20 @@ async function sendMessage() {
   input.value = "";
   messages.scrollTop = messages.scrollHeight;
 
+  // Get device_id
+  const deviceId = getDeviceId();
+
   // Call backend API for reply
   try {
     const res = await fetch(BACKEND_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: msg }),
+      body: JSON.stringify({ message: msg, device_id: deviceId }),
     });
     const data = await res.json();
 
     if (!res.ok) {
-      // Server error ?? ?? JSON ??? message ?? ?? ?????, ???? ?? generic error
+      // Server error or abuse block message etc.
       botDiv.innerText = data.reply || `Error: ${res.status}`;
     } else {
       botDiv.innerText = data.reply || "No response from bot.";
@@ -1495,8 +1506,8 @@ if ('webkitSpeechRecognition' in window) {
 } else {
   micBtn.style.display = "none";
 }
-
 </script>
+
 
       <!-- Footer -->
       <footer class="bg-slate-900 border-t border-slate-800 mt-16">
