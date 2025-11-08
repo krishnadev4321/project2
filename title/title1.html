@@ -194,9 +194,16 @@
     .session {
       font-family: 'Courier New', Courier, monospace;
       font-size: clamp(28px, 3.2vw, 35px);
-      font-weight: bold;
-      color: #00008B;
+      font-weight: bolder;
+      color: #ff0000;
       margin: 12px 0 0 0;
+    }
+    .department {
+      font-family: 'Georgia', serif;
+      font-size: clamp(24px, 2.8vw, 30px);
+      font-weight: bold;
+      color: #2200ff;
+      margin: 8px 0;
     }
     .subject-title {
       font-family: 'Arial Black', Gadget, sans-serif;
@@ -225,7 +232,7 @@
       justify-content: space-between;
       width: 100%;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 120px;
       gap: 20px;
       word-wrap: break-word;
       overflow-wrap: break-word;
@@ -234,22 +241,22 @@
       width: 46%;
       min-width: 180px;
       text-align: left;
-      padding: 20px 15px 15px 15px;
-      background: rgba(178, 34, 34, 0.16);
-      border-radius: 8px;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
       margin: 0 auto 0 auto;
       box-sizing: border-box;
       font-size: 1.5em;
-      color: #B22222;
+      color: #000;
       font-weight: 600;
-      box-shadow: 0 1.5px 11px rgba(178, 34, 34, 0.2);
+      box-shadow: none;
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
     h4 {
       font-family: 'Georgia', 'Times New Roman', Times, serif;
       font-size: clamp(24px, 3vw, 28px);
-      color: #8B0000;
+      color: #db0707;
       margin-bottom: 16px;
       border-bottom: 2px solid #8B0000;
       padding-bottom: 6px;
@@ -425,6 +432,10 @@ function closePopup() {
       <h3>Fill your details from here</h3>
       <label for="session">Session:</label>
       <input type="text" id="session" value="2025-2026" />
+      
+      <label for="department">Department:</label>
+      <input type="text" id="department" value="Department of Computer Science" placeholder="Enter Department Name" />
+      
       <label for="subject">Subject:</label>
       <input type="text" id="subject" value="SOCIAL SCIENCE" />
       <label for="projectFile">Project File:</label>
@@ -460,6 +471,7 @@ function closePopup() {
           id="collegeLogo"
         />
         <div class="session" id="page-session">SESSION:- 2025-2026</div>
+        <div class="department" id="page-department">DEPARTMENT OF COMPUTER SCIENCE</div>
         <div class="subject-title" id="page-subject">SUBJECT : SOCIAL SCIENCE</div>
         <div class="project-file" id="page-projectFile">PROJECT FILE</div>
         <img alt="Subject Logo" class="subject-logo" id="subjectLogo" />
@@ -512,6 +524,10 @@ function closePopup() {
     function updatePageData() {
       document.getElementById('page-session').innerText =
         'SESSION:- ' + document.getElementById('session').value;
+      
+      document.getElementById('page-department').innerText =
+        document.getElementById('department').value;
+      
       document.getElementById('page-subject').innerText =
         'SUBJECT : ' + document.getElementById('subject').value;
       document.getElementById('page-projectFile').innerText =

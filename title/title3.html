@@ -297,7 +297,7 @@ background: linear-gradient(120deg, #ff0080, #ff8c00, #40e0d0, #1e90ff);
       font-family: 'Courier New', Courier, monospace;
       font-size: clamp(28px, 3.3vw, 34px);
       font-weight: bolder;
-      color: #ff0000;
+      color: #0b03ff;
       margin: 15px 0 0 0;
       background: rgba(255,255,255,0.85);
       display: inline-block;
@@ -305,6 +305,20 @@ background: linear-gradient(120deg, #ff0080, #ff8c00, #40e0d0, #1e90ff);
       border-radius: 25px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       border: 2px solid #00008B;
+    }
+    
+    .department {
+      font-family: 'Georgia', serif;
+      font-size: clamp(26px, 3vw, 32px);
+      font-weight: bold;
+      color: #ff0000;
+      margin: 10px 0 5px 0;
+      background: rgba(255,255,255,0.85);
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 2px solid #8B0000;
     }
     
     .subject-title {
@@ -326,7 +340,7 @@ background: linear-gradient(120deg, #ff0080, #ff8c00, #40e0d0, #1e90ff);
       font-size: clamp(28px, 3.3vw, 34px);
       color: #1100ff;
       margin-top: 16px;
-      background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      background: linear-gradient(90deg, transparent, #ffffff, transparent);
       display: inline-block;
       padding: 8px 20px;
       border-radius: 25px;
@@ -628,6 +642,10 @@ function closePopup() {
       <h3>Fill your details from here</h3>
       <label for="session">Session:</label>
       <input type="text" id="session" value="2025-2026" />
+      
+      <label for="department">Department:</label>
+      <input type="text" id="department" value="Department of Computer Science" placeholder="Enter Department Name" />
+      
       <label for="subject">Subject:</label>
       <input type="text" id="subject" value="Data Structure" />
       <label for="projectFile">Project File:</label>
@@ -668,6 +686,7 @@ function closePopup() {
           />
           
           <div class="session" id="page-session">SESSION:- 2025-2026</div>
+          <div class="department" id="page-department">DEPARTMENT OF COMPUTER SCIENCE</div>
           <div class="subject-title" id="page-subject">SUBJECT : DATA STRUCTURE</div>
           <div class="project-file" id="page-projectFile">PROJECT FILE</div>
           <img alt="Subject Logo" class="subject-logo" id="subjectLogo" />
@@ -724,6 +743,10 @@ function closePopup() {
     function updatePageData() {
       document.getElementById('page-session').innerText =
         'SESSION:- ' + document.getElementById('session').value;
+      
+      document.getElementById('page-department').innerText =
+        document.getElementById('department').value.toUpperCase();
+      
       document.getElementById('page-subject').innerText =
         'SUBJECT : ' + document.getElementById('subject').value;
       document.getElementById('page-projectFile').innerText =

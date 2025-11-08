@@ -117,7 +117,8 @@
     }
     
     .form-container input[type="text"],
-    .form-container input[type="file"] {
+    .form-container input[type="file"],
+    .form-container select {
       width: 96%;
       padding: 10px;
       margin-bottom: 16px;
@@ -128,7 +129,8 @@
       transition: all 0.3s;
     }
     
-    .form-container input[type="text"]:focus {
+    .form-container input[type="text"]:focus,
+    .form-container select:focus {
       border-color: #8B0000;
       box-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
       outline: none;
@@ -279,6 +281,18 @@
       border-radius: 20px;
     }
     
+    .department {
+      font-family: 'algerian';
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: bold;
+      color: #ff0000;
+      margin: 8px 0;
+      background: rgba(255,255,255,0.7);
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+    
     .subject-title {
       font-family: 'Arial Black', Gadget, sans-serif;
       font-size: clamp(26px, 3.5vw, 32px);
@@ -317,7 +331,7 @@
       justify-content: space-between;
       width: 100%;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 120px;
       gap: 20px;
       word-wrap: break-word;
       overflow-wrap: break-word;
@@ -546,7 +560,11 @@ function closePopup() {
     <div class="form-container">
       <h3>Fill your details from here</h3>
       <label for="session">Session:</label>
-      <input type="text" id="session" value="2025-2026" />
+      <input type="text" id="session" value="2024-2025" />
+      
+     <label for="department">Department:</label>
+<input type="text" id="department" value="Department of Computer Science" placeholder="Enter Department Name" />
+      
       <label for="subject">Subject:</label>
       <input type="text" id="subject" value="Data Structure" />
       <label for="projectFile">Project File:</label>
@@ -585,8 +603,9 @@ function closePopup() {
         id="collegeLogo"
       />
       
-      <div class="session" id="page-session">SESSION:- 2025-2026</div>
-      <div class="subject-title" id="page-subject">SUBJECT : SOCIAL SCIENCE</div>
+      <div class="session" id="page-session">SESSION:- 2024-2025</div>
+      <div class="department" id="page-department">DEPARTMENT OF COMPUTER SCIENCE</div>
+      <div class="subject-title" id="page-subject">SUBJECT : DATA STRUCTURE</div>
       <div class="project-file" id="page-projectFile">PROJECT FILE</div>
       <img alt="Subject Logo" class="subject-logo" id="subjectLogo" />
       
@@ -594,7 +613,7 @@ function closePopup() {
         <div class="submitted-by">
           <h4>SUBMITTED BY-</h4>
           <p id="page-studentName"><b>NAME:</b> ABCD</p>
-          <p id="page-className"><b>CLASS:</b> B.A. (Hons.) Political Science, Semester-III</p>
+          <p id="page-className"><b>CLASS:</b> BCA Second Year, Semester-III</p>
           <p id="page-rollNo"><b>ROLL NO:</b> 21035540029</p>
         </div>
         <div class="submitted-to">
@@ -611,6 +630,18 @@ function closePopup() {
     const subjectLogoImg = document.getElementById('subjectLogo');
     const subjectLogoUpload = document.getElementById('subjectLogoUpload');
     const projectPage = document.getElementById('projectPage');
+    const departmentSelect = document.getElementById('department');
+    const customDepartmentInput = document.getElementById('customDepartment');
+
+    // Handle department selection
+    departmentSelect.addEventListener('change', function() {
+      if (this.value === 'Other') {
+        customDepartmentInput.style.display = 'block';
+        customDepartmentInput.value = '';
+      } else {
+        customDepartmentInput.style.display = 'none';
+      }
+    });
 
     showSubjectLogoCheckbox.addEventListener('change', () => {
       if (showSubjectLogoCheckbox.checked) {
@@ -638,6 +669,14 @@ function closePopup() {
     function updatePageData() {
       document.getElementById('page-session').innerText =
         'SESSION:- ' + document.getElementById('session').value;
+      
+      // Get department value
+      let departmentValue = document.getElementById('department').value;
+      if (departmentValue === 'Other') {
+        departmentValue = document.getElementById('customDepartment').value;
+      }
+      document.getElementById('page-department').innerText = departmentValue;
+      
       document.getElementById('page-subject').innerText =
         'SUBJECT : ' + document.getElementById('subject').value;
       document.getElementById('page-projectFile').innerText =
