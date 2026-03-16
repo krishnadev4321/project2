@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -79,10 +79,8 @@
         -moz-osx-font-smoothing: grayscale;
         background-color: #020617; /* Even darker base */
         /* Subtle grid pattern */
-        background-image: linear-gradient(
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px
-          ),
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
           linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         background-size: 20px 20px;
       }
@@ -159,7 +157,8 @@
       .reveal-on-scroll {
         opacity: 0;
         transform: translateY(40px);
-        transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        transition:
+          opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
           transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       .reveal-on-scroll.is-visible {
@@ -208,21 +207,32 @@
       #close-alert:hover {
         opacity: 1;
         color: #00ffaa;
-        text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+        text-shadow:
+          0 0 10px #00ffaa,
+          0 0 20px #00ffaa;
         transform: scale(1.1);
       }
       .glow-text {
-        text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa, 0 0 40px #00ffaa,
+        text-shadow:
+          0 0 10px #00ffaa,
+          0 0 20px #00ffaa,
+          0 0 40px #00ffaa,
           0 0 80px #00ffaa;
         animation: neonGlow 2s infinite alternate ease-in-out;
         color: #ffffff;
       }
       @keyframes neonGlow {
         0% {
-          text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa, 0 0 30px #00ffaa;
+          text-shadow:
+            0 0 10px #00ffaa,
+            0 0 20px #00ffaa,
+            0 0 30px #00ffaa;
         }
         100% {
-          text-shadow: 0 0 15px #00ffaa, 0 0 30px #00ffaa, 0 0 45px #00ffaa,
+          text-shadow:
+            0 0 15px #00ffaa,
+            0 0 30px #00ffaa,
+            0 0 45px #00ffaa,
             0 0 60px #00ffaa;
         }
       }
@@ -404,18 +414,17 @@
         z-index: 9999;
         min-width: 340px;
         max-width: 97vw;
-        background: radial-gradient(
-            circle at 20% 80%,
-            #00ffaa15 25%,
-            transparent 50%
-          ),
+        background:
+          radial-gradient(circle at 20% 80%, #00ffaa15 25%, transparent 50%),
           radial-gradient(circle at 80% 20%, #ff00aa15 25%, transparent 50%),
           radial-gradient(circle at 40% 40%, #aa00ff15 25%, transparent 50%),
           linear-gradient(135deg, #0a0a0a 55%, #1a1a1a 90%);
         color: #fafafa;
         padding: 40px 38px 28px 38px;
         border-radius: 22px;
-        box-shadow: 0 0 30px #00ffaa44, 0 4px 40px rgba(0, 255, 170, 0.15);
+        box-shadow:
+          0 0 30px #00ffaa44,
+          0 4px 40px rgba(0, 255, 170, 0.15);
         display: flex;
         align-items: flex-start;
         gap: 14px;
@@ -1075,9 +1084,10 @@
                       Computer Laboratory and Practical Work of Programming
                       Principle & Algorithm
                     </li>
-                    <button 
+                    <button
                       class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
-                   onclick="window.open('fullsyllabus/sem1.pdf')" >
+                      onclick="window.open('fullsyllabus/sem1.pdf')"
+                    >
                       Download Full syllabus Of Semester 1
                     </button>
                   </ul>
@@ -1115,9 +1125,10 @@
                     <li>
                       Computer Laboratory and Practical Work of C Programming
                     </li>
-                      <button 
+                    <button
                       class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
-                   onclick="window.open('fullsyllabus/sem2.pdf')" >
+                      onclick="window.open('fullsyllabus/sem2.pdf')"
+                    >
                       Download Full syllabus Of Semester 2
                     </button>
                   </ul>
@@ -1154,9 +1165,10 @@
                     <li>Elements of Statistics</li>
                     <li>Computer Laboratory and Practical Work of OOPS</li>
                     <li>Computer Laboratory and Practical Work of DS</li>
-                      <button 
+                    <button
                       class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
-                   onclick="window.open('fullsyllabus/sem3.pdf')" >
+                      onclick="window.open('fullsyllabus/sem3.pdf')"
+                    >
                       Download Full syllabus Of Semester 3
                     </button>
                   </ul>
@@ -1195,9 +1207,10 @@
                       Computer Laboratory and Practical Work of Computer
                       Graphics & Multimedia Application
                     </li>
-                      <button 
+                    <button
                       class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
-                   onclick="window.open('fullsyllabus/sem4.pdf')" >
+                      onclick="window.open('fullsyllabus/sem4.pdf')"
+                    >
                       Download Full syllabus Of Semester 4
                     </button>
                   </ul>
@@ -1237,10 +1250,11 @@
                     <li>
                       Computer Laboratory and Practical Work of Java Programming
                       & Dynamic Webpage Design
-                    </li> 
-                     <button 
+                    </li>
+                    <button
                       class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
-                   onclick="window.open('fullsyllabus/sem5.pdf')" >
+                      onclick="window.open('fullsyllabus/sem5.pdf')"
+                    >
                       Download Full syllabus Of Semester 5
                     </button>
                   </ul>
@@ -1278,9 +1292,10 @@
                     <li>Knowledge Management</li>
                     <li>Major Project</li>
                     <li>Presentation/Seminar based on Major Project</li>
-                      <button 
+                    <button
                       class="nav-link w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105"
-                   onclick="window.open('fullsyllabus/sem6.pdf')" >
+                      onclick="window.open('fullsyllabus/sem6.pdf')"
+                    >
                       Download Full syllabus Of Semester 6
                     </button>
                   </ul>
@@ -1601,14 +1616,18 @@
       <!-- Chat Window -->
       <div id="chatbox">
         <div id="chat-header">BCA Guide Bot</div>
+
         <div id="messages"></div>
+
         <div id="userInputContainer">
           <input
             id="userInput"
             placeholder="Type your message..."
-            onkeydown="if(event.key==='Enter') sendMessage()"
+            onkeydown="if (event.key === 'Enter') sendMessage();"
           />
+
           <button id="sendBtn" onclick="sendMessage()">></button>
+
           <button
             id="micBtn"
             style="
@@ -1634,40 +1653,86 @@
           </button>
         </div>
       </div>
+
       <script>
         const BACKEND_URL = "https://project3-backend-siwj.onrender.com/chat";
 
-        // Chatbox open/close (best-practice toggle with .show class)
+        /* CHAT OPEN / CLOSE */
+
         function toggleChat() {
           const chatbox = document.getElementById("chatbox");
+
           if (chatbox.classList.contains("show")) {
             chatbox.classList.remove("show");
             chatbox.style.display = "none";
           } else {
             chatbox.classList.add("show");
             chatbox.style.display = "flex";
+
+            showOptions();
           }
         }
 
-        // Hand Wave Animation — every 3s
-        function waveAnimation() {
-          const wave = document.getElementById("wave-hand");
-          if (!wave) return;
-          wave.style.opacity = 1;
-          wave.style.transform = "rotate(0deg)";
-          let degs = [0, 14, -8, 14, -4, 10, 0];
-          let i = 0;
-          const interval = setInterval(() => {
-            wave.style.transform = `rotate(${degs[i]}deg)`;
-            i++;
-            if (i >= degs.length) clearInterval(interval);
-          }, 300);
-          setTimeout(() => (wave.style.opacity = 0), 2500);
-        }
-        setTimeout(waveAnimation, 500);
-        setInterval(waveAnimation, 3000);
+        /* SHOW OPTIONS */
 
-        // Generate or get deviceId from localStorage
+        function showOptions() {
+          const messages = document.getElementById("messages");
+
+          const botDiv = document.createElement("div");
+
+          botDiv.style.alignSelf = "flex-start";
+          botDiv.style.background = "#334155";
+          botDiv.style.padding = "8px 10px";
+          botDiv.style.borderRadius = "12px";
+
+          botDiv.innerHTML = `
+
+  Welcome to BCA Guide Bot
+
+  Choose an option:
+
+  <br><br>
+
+
+  <br>
+
+  <button onclick="sendOption('1')"> Press 1 - notes</button>
+
+  <br>
+
+  <button onclick="sendOption('2')"> Press 2 - Syllabus</button>
+
+  <br>
+
+  <button onclick="sendOption('3')"> Press 3 - Previous Papers</button>
+
+  <br>
+
+  <button onclick="sendOption('4')"> Press 4 - Assignment Templates</button>
+
+  <br>
+
+  <button onclick="sendOption('5')"> Press 5 - About Us</button>
+
+  <br>
+
+  <button onclick="sendOption('6')"> Press 6 - Useful Links</button>
+
+  `;
+
+          messages.appendChild(botDiv);
+        }
+
+        /* OPTION CLICK */
+
+        function sendOption(opt) {
+          document.getElementById("userInput").value = opt;
+
+          sendMessage();
+        }
+
+        /* DEVICE ID */
+
         function getDeviceId() {
           if (!localStorage.deviceId) {
             localStorage.deviceId =
@@ -1676,111 +1741,163 @@
               "_" +
               Math.random().toString(36).substr(2, 10);
           }
+
           return localStorage.deviceId;
         }
 
-        // Send Message and handle Gemini bot reply
+        /* SEND MESSAGE */
+
         async function sendMessage() {
           const input = document.getElementById("userInput");
+
           const msg = input.value.trim();
+
           if (!msg) return;
 
           const messages = document.getElementById("messages");
 
-          // User Message
+          /* USER MESSAGE */
+
           const userDiv = document.createElement("div");
+
           userDiv.style.alignSelf = "flex-end";
+
           userDiv.style.background = "#4f46e5";
+
           userDiv.style.padding = "6px 10px";
+
           userDiv.style.borderRadius = "12px";
+
           userDiv.innerText = msg;
+
           messages.appendChild(userDiv);
 
-          // Bot Message (loading state)
+          /* BOT LOADING */
+
           const botDiv = document.createElement("div");
+
           botDiv.style.alignSelf = "flex-start";
+
           botDiv.style.background = "#334155";
+
           botDiv.style.padding = "6px 10px";
+
           botDiv.style.borderRadius = "12px";
+
           botDiv.innerText = "Bot is typing...";
+
           messages.appendChild(botDiv);
 
           input.value = "";
+
           messages.scrollTop = messages.scrollHeight;
 
-          // Get device_id
           const deviceId = getDeviceId();
 
-          // Call backend API for reply
           try {
-            const res = await fetch(BACKEND_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ message: msg, device_id: deviceId }),
-            });
+            const res = await fetch(
+              BACKEND_URL,
+
+              {
+                method: "POST",
+
+                headers: {
+                  "Content-Type": "application/json",
+                },
+
+                body: JSON.stringify({
+                  message: msg,
+
+                  device_id: deviceId,
+                }),
+              },
+            );
+
             const data = await res.json();
 
             if (!res.ok) {
-              // Server error or abuse block message etc.
-              botDiv.innerText = data.reply || `Error: ${res.status}`;
+              botDiv.innerText = data.reply || `Error ${res.status}`;
             } else {
-              botDiv.innerText = data.reply || "No response from bot.";
+              botDiv.innerText = data.reply || "No response";
             }
           } catch (err) {
-            botDiv.innerText = "Sorry, network error! Try again.";
+            botDiv.innerText = "Network error";
           }
+
           messages.scrollTop = messages.scrollHeight;
         }
 
-        // Bonus: Enter key triggers sendMessage
-        document.addEventListener("DOMContentLoaded", () => {
-          const input = document.getElementById("userInput");
-          if (input) {
-            input.addEventListener("keydown", function (e) {
-              if (e.key === "Enter") sendMessage();
-            });
-          }
-        });
+        /* ENTER KEY */
+
+        document.addEventListener(
+          "DOMContentLoaded",
+
+          () => {
+            const input = document.getElementById("userInput");
+
+            input.addEventListener(
+              "keydown",
+
+              function (e) {
+                if (e.key === "Enter") sendMessage();
+              },
+            );
+          },
+        );
+
+        /* MIC SPEECH */
 
         const micBtn = document.getElementById("micBtn");
+
         const micIcon = document.getElementById("micIcon");
+
         const input = document.getElementById("userInput");
+
         let recognition,
           isRecording = false;
 
         if ("webkitSpeechRecognition" in window) {
           recognition = new webkitSpeechRecognition();
+
           recognition.lang = "hi-IN";
 
           micBtn.onclick = () => {
             if (!isRecording) {
               recognition.start();
+
               micBtn.style.background = "#4f46e5";
+
               micIcon.setAttribute("fill", "#fff");
+
               isRecording = true;
             } else {
               recognition.stop();
+
               micBtn.style.background = "#fff";
+
               micIcon.setAttribute("fill", "#4f46e5");
+
               isRecording = false;
             }
           };
 
           recognition.onresult = function (event) {
             const transcript = event.results[0][0].transcript;
+
             input.value = transcript;
           };
 
           recognition.onend = function () {
             micBtn.style.background = "#fff";
+
             micIcon.setAttribute("fill", "#4f46e5");
+
             isRecording = false;
           };
         } else {
           micBtn.style.display = "none";
         }
       </script>
-
       <!-- Footer -->
       <footer class="bg-slate-900 border-t border-slate-800 mt-16">
         <div
@@ -1874,7 +1991,7 @@
           },
           {
             threshold: 0.1,
-          }
+          },
         );
 
         function handleScrollAnimations() {
