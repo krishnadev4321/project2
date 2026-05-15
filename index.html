@@ -1632,6 +1632,11 @@
             showOptions();
           }
         }
+function sanitizeInput(str) {
+    const div = document.createElement('div');
+    div.textContent = str; 
+    return div.innerHTML;
+}
 
         /* SHOW OPTIONS */
 
@@ -1706,86 +1711,73 @@
         }
 
         /* SEND MESSAGE */
+async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const rawMsg = input.value.trim();
 
-        async function sendMessage() {
-          const input = document.getElementById("userInput");
+    // 1. Validation: Khali message check
+    if (!rawMsg) return;
 
-          const msg = input.value.trim();
+    // 2. Validation: Bahut bada message block karein (Flood protection)
+    if (rawMsg.length > 500) {
+        alert("Message too long! Please keep it under 500 characters.");
+        return;
+    }
 
-          if (!msg) return;
+    // 3. Security: Input ko sanitize karein
+    const msg = sanitizeInput(rawMsg);
 
-          const messages = document.getElementById("messages");
+    const messages = document.getElementById("messages");
 
-          /* USER MESSAGE */
+    /* USER MESSAGE DISPLAY */
+    const userDiv = document.createElement("div");
+    userDiv.style.alignSelf = "flex-end";
+    userDiv.style.background = "#4f46e5";
+    userDiv.style.padding = "6px 10px";
+    userDiv.style.borderRadius = "12px";
+    userDiv.textContent = msg; // innerHTML ki jagah textContent use karna hamesha safe hota hai
+    messages.appendChild(userDiv);
 
-          const userDiv = document.createElement("div");
+    /* BOT LOADING STATE */
+    const botDiv = document.createElement("div");
+    botDiv.style.alignSelf = "flex-start";
+    botDiv.style.background = "#334155";
+    botDiv.style.padding = "6px 10px";
+    botDiv.style.borderRadius = "12px";
+    botDiv.innerText = "Bot is typing...";
+    messages.appendChild(botDiv);
 
-          userDiv.style.alignSelf = "flex-end";
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
 
-          userDiv.style.background = "#4f46e5";
+    const deviceId = getDeviceId();
 
-          userDiv.style.padding = "6px 10px";
+    try {
+        const res = await fetch(BACKEND_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                message: msg, // Sanitize kiya hua message backend ko jayega
+                device_id: deviceId,
+            }),
+        });
 
-          userDiv.style.borderRadius = "12px";
+        const data = await res.json();
 
-          userDiv.innerText = msg;
-
-          messages.appendChild(userDiv);
-
-          /* BOT LOADING */
-
-          const botDiv = document.createElement("div");
-
-          botDiv.style.alignSelf = "flex-start";
-
-          botDiv.style.background = "#334155";
-
-          botDiv.style.padding = "6px 10px";
-
-          botDiv.style.borderRadius = "12px";
-
-          botDiv.innerText = "Bot is typing...";
-
-          messages.appendChild(botDiv);
-
-          input.value = "";
-
-          messages.scrollTop = messages.scrollHeight;
-
-          const deviceId = getDeviceId();
-
-          try {
-            const res = await fetch(
-              BACKEND_URL,
-
-              {
-                method: "POST",
-
-                headers: {
-                  "Content-Type": "application/json",
-                },
-
-                body: JSON.stringify({
-                  message: msg,
-
-                  device_id: deviceId,
-                }),
-              },
-            );
-
-            const data = await res.json();
-
-            if (!res.ok) {
-              botDiv.innerText = data.reply || `Error ${res.status}`;
-            } else {
-              botDiv.innerText = data.reply || "No response";
-            }
-          } catch (err) {
-            botDiv.innerText = "Network error";
-          }
-
-          messages.scrollTop = messages.scrollHeight;
+        if (!res.ok) {
+            botDiv.innerText = data.reply || `Error ${res.status}`;
+        } else {
+            // Backend se aaye reply ko bhi safely handle karein
+            botDiv.innerText = data.reply || "No response";
         }
+    } catch (err) {
+        botDiv.innerText = "Network error - Please try again later";
+    }
+
+    messages.scrollTop = messages.scrollHeight;
+}
 
         /* ENTER KEY */
 
@@ -1841,11 +1833,10 @@
             }
           };
 
-          recognition.onresult = function (event) {
-            const transcript = event.results[0][0].transcript;
-
-            input.value = transcript;
-          };
+        recognition.onresult = function (event) {
+    const transcript = event.results[0][0].transcript;
+    input.value = sanitizeInput(transcript);
+};
 
           recognition.onend = function () {
             micBtn.style.background = "#fff";
