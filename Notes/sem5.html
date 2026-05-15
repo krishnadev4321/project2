@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGKVP BCA Semester 5 Notes | Introduction to DBMS , Java Programming and Dynamic Webpage Design , Computer Network , Numerical Methods </title>
+    <meta name="description" content="Download MGKVP BCA Semester 5 notes — Introduction to DBMS , Java Programming and Dynamic Webpage Design , Computer Network , Numerical Methods." />
+
+
+  <!-- Character Encoding -->
+  <meta charset="UTF-8" />
+
+  <!-- Mobile Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Description (search result snippet, max ~155 chars) -->
+
+  <!-- Keywords (optional, Google me weight kam hai par dusre search engines ke liye theek hai) -->
+  <meta name="keywords" content="MGKVP BCA, BCA notes, BCA syllabus, MGKVP BCA papers, BCA Guide" />
+
+  <!-- Author -->
+  <meta name="author" content="Krishna Seth" />
+
+  <!-- Robots (index/follow settings) -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical (duplicate URL handle) -->
+  <link rel="canonical" href="https://bca-guide-web.onrender.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MGKVP BCA Notes, Syllabus & Papers | BCA Guide" />
+  <meta property="og:description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah." />
+  <meta property="og:url" content="https://bca-guide-web.onrender.com/" />
+  <meta property="og:image" content="https://bca-guide-web.onrender.com" />
+  <meta property="og:site_name" content="BCA Guide" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MGKVP BCA Notes, Syllabus & Papers | BCA Guide" />
+  <meta name="twitter:description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah." />
+  <meta name="twitter:image" content="https://bca-guide-web.onrender.com" />
+
+  <!-- Theme color (mobile browsers ke liye tab color) -->
+  <meta name="theme-color" content="#6D28D9" />
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === CSS Variables for Color Theme === */
+        :root {
+            --bg-color-1: #0f172a; /* Dark Blue */
+            --bg-color-2: #2e1065; /* Deep Purple */
+            --bg-color-3: #164e63; /* Deep Cyan */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-hover-bg: rgba(255, 255, 255, 0.1);
+            --cyan-glow: #06b6d4;
+            --purple-glow: #a855f7;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+        }
+
+        /* === Global Resets & Typography === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
+            background-size: 300% 300%;
+            animation: gradientMove 15s ease infinite;
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Continuous Background Gradient Animation */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* === Floating Glowing Blobs === */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: 0;
+            animation: floatBlob 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--purple-glow);
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--cyan-glow);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 100px) scale(1.2); }
+        }
+
+        /* === Layout Container === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1; /* Ensures content stays above blobs */
+            flex: 1;
+        }
+
+        /* === Header Section === */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 40px;
+            /* Fade down on load */
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeDown 1s ease forwards;
+        }
+
+        @keyframes fadeDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* === Responsive Grid === */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
+            gap: 30px;
+        }
+
+        /* === Glassmorphism Cards === */
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-light);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); /* Safari support */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            /* Initial state for sequential fade up */
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* Class added by JS to trigger fade up */
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Shine Sweep Element */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+
+        /* Card Hover Effects */
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: var(--glass-hover-bg);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.3); /* Neon Cyan Glow */
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card:hover::before {
+            left: 150%; /* Triggers shine sweep */
+        }
+
+        /* Card Content Styling */
+        .icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--cyan-glow), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.5;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--cyan-glow);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .btn i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Arrow slide on hover */
+        .card:hover .btn i {
+            transform: translateX(6px);
+        }
+
+        /* === Footer === */
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === Responsive Media Queries === */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr; /* Mobile: 1 column */
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .blob-1 {
+                width: 250px;
+                height: 250px;
+            }
+            .blob-2 {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glowing Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Semester 5 Study Notes</h1>
+            <p>Access comprehensive notes for all Semester 5 subjects in one place</p>
+        </header>
+
+        
+        <div class="grid" id="cardGrid">
+            
+            
+            <a href="NotesWritten/semester5/dbms.pdf" class="card" target="_blank">
+                <div class="icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <h3>Introduction to DBMS</h3>
+                <p>Learn core concepts of databases, SQL queries, relational algebra, and normalization.</p>
+                <div class="btn">Open Notes <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Subject 2: Java -->
+            <a href="NotesWritten/semester5/java.pdf" class="card" target="_blank">
+                <div class="icon">
+                    <i class="fa-brands fa-java"></i>
+                </div>
+                <h3>Java Programming and Dynamic Webpage Design</h3>
+                <p>Master OOPs concepts, multithreading, applets, and dynamic web architectures.</p>
+                <div class="btn">Open Notes <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Subject 3: Computer Network -->
+            <a href="NotesWritten/semester5/computer.pdf" class="card" target="_blank">
+                <div class="icon">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h3>Computer Network</h3>
+                <p>Explore OSI models, TCP/IP, routing protocols, and network security foundations.</p>
+                <div class="btn">Open Notes <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Subject 4: Numerical Methods -->
+            <a href="NotesWritten/semester5/numerical.pdf" class="card" target="_blank">
+                <div class="icon">
+                    <i class="fa-solid fa-square-root-variable"></i>
+                </div>
+                <h3>Numerical Methods</h3>
+                <p>Study computational algorithms, error analysis, and mathematical approximations.</p>
+                <div class="btn">Open Notes <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 BCA Guide | Webpage Designed by Krishna Seth</p>
+    </footer>
+
+    <!-- JavaScript for Sequential Fade-Up Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll('.card');
+            
+            // Loop through each card and apply the visibility class with a staggered delay
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                    
+                    // Add smooth transition properties after the initial render 
+                    // so the transform works properly during hover
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.4s ease';
+                    }, 500); 
+                    
+                }, 150 * (index + 1)); // 150ms delay multiplier for sequential effect
+            });
+        });
+    </script>
+</body>
+</html>
