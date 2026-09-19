@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 - BCA 5th Semester PYQs | MGKVP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' } } } }
+        }
+    </script>
+
+    <style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        
+        .subject-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .subject-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+        .dark .subject-card:hover { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border-color: #4b5563; }
+        .icon-wrapper { transition: all 0.3s ease; }
+        .subject-card:hover .icon-wrapper { transform: scale(1.1) rotate(5deg); }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 dark:bg-[#0f172a] dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300 selection:bg-primary-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/70 dark:bg-[#0f172a]/80 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-4">
+                    <a href="../../index.html" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors group">
+                        <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i>
+                    </a>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-xl tracking-tight leading-none">2024 PYQs</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">MGKVP BCA 5th Sem</span>
+                    </div>
+                </div>
+                <button id="theme-toggle" aria-label="Toggle Dark Mode" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <i id="theme-icon" class="fas fa-moon text-lg transition-transform duration-500"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-semibold text-sm mb-6 border border-indigo-100 dark:border-indigo-800/50">
+                <i class="fas fa-calendar-alt"></i> Year 2024 Papers
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                Select a <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-violet-600 dark:from-primary-400 dark:to-violet-400">Subject</span>
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 text-balance">
+                Click on any subject below to instantly view or download the 2024 question paper in PDF format.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <a href="dbms.pdf" target="_blank" class="subject-card group relative bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 overflow-hidden fade-in-up delay-100">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-database text-6xl text-primary-500"></i></div>
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="icon-wrapper w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6 shadow-inner"><i class="fas fa-database text-2xl"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Introduction to DBMS</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">Database Management Systems concepts, SQL, and architectures.</p>
+                    <div class="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm">View Paper <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition-transform"></i></div>
+                </div>
+            </a>
+            <a href="java.pdf" target="_blank" class="subject-card group relative bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 overflow-hidden fade-in-up delay-200">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fab fa-java text-6xl text-orange-500"></i></div>
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="icon-wrapper w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center mb-6 shadow-inner"><i class="fab fa-java text-3xl"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">Java Programming & DWD</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">Core Java, Dynamic Webpage Design, Servlets, and JSP.</p>
+                    <div class="inline-flex items-center text-orange-600 dark:text-orange-400 font-semibold text-sm">View Paper <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition-transform"></i></div>
+                </div>
+            </a>
+            <a href="network.pdf" target="_blank" class="subject-card group relative bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 overflow-hidden fade-in-up delay-300">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-network-wired text-6xl text-emerald-500"></i></div>
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="icon-wrapper w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-6 shadow-inner"><i class="fas fa-network-wired text-2xl"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Computer Network</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">OSI Model, TCP/IP, routing protocols, and network security.</p>
+                    <div class="inline-flex items-center text-emerald-600 dark:text-emerald-400 font-semibold text-sm">View Paper <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition-transform"></i></div>
+                </div>
+            </a>
+            <a href="soft.pdf" target="_blank" class="subject-card group relative bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 overflow-hidden fade-in-up delay-400">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity"><i class="fas fa-project-diagram text-6xl text-purple-500"></i></div>
+                <div class="relative z-10 flex flex-col h-full">
+                    <div class="icon-wrapper w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6 shadow-inner"><i class="fas fa-project-diagram text-2xl"></i></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Software Project Management</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow">SDLC, planning, cost estimation, and risk management.</p>
+                    <div class="inline-flex items-center text-purple-600 dark:text-purple-400 font-semibold text-sm">View Paper <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition-transform"></i></div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-slate-500 dark:text-slate-400 text-sm text-center font-medium">
+                &copy; <span id="current-year"></span> MGKVP BCA PYQ. 
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            const themeToggleBtn = document.getElementById('theme-toggle'), themeIcon = document.getElementById('theme-icon'), htmlElement = document.documentElement;
+            const setTheme = (theme) => {
+                if (theme === 'dark') { htmlElement.classList.add('dark'); themeIcon.className = 'fas fa-sun text-lg transition-transform duration-500 rotate-180'; localStorage.setItem('theme', 'dark'); }
+                else { htmlElement.classList.remove('dark'); themeIcon.className = 'fas fa-moon text-lg transition-transform duration-500 rotate-0'; localStorage.setItem('theme', 'light'); }
+            };
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) setTheme('dark'); else setTheme('light');
+            themeToggleBtn.addEventListener('click', () => setTheme(htmlElement.classList.contains('dark') ? 'light' : 'dark'));
+        });
+    </script>
+</body>
+</html>

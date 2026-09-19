@@ -1,662 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Page Title (60 chars ke andar) -->
-  <title>MGKVP BCA Notes, Syllabus & Papers | BCA Guide</title>
-
-  <!-- Character Encoding -->
-  <meta charset="UTF-8" />
-
-  <!-- Mobile Responsive -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Description (search result snippet, max ~155 chars) -->
-  <meta name="description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah download karein. Updated 2025." />
-
-  <!-- Keywords (optional, Google me weight kam hai par dusre search engines ke liye theek hai) -->
-  <meta name="keywords" content="MGKVP BCA, BCA notes, BCA syllabus, MGKVP BCA papers, BCA Guide" />
-
-  <!-- Author -->
-  <meta name="author" content="Krishna Seth" />
-
-  <!-- Robots (index/follow settings) -->
-  <meta name="robots" content="index, follow" />
-
-  <!-- Canonical (duplicate URL handle) -->
-  <link rel="canonical" href="https://bca-guide-web.onrender.com/" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="MGKVP BCA Notes, Syllabus & Papers | BCA Guide" />
-  <meta property="og:description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah." />
-  <meta property="og:url" content="https://bca-guide-web.onrender.com/" />
-  <meta property="og:image" content="https://bca-guide-web.onrender.com/assets/cover.jpg" />
-  <meta property="og:site_name" content="BCA Guide" />
-
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MGKVP BCA Notes, Syllabus & Papers | BCA Guide" />
-  <meta name="twitter:description" content="MGKVP BCA ke sabhi semester ke notes, syllabus aur previous year papers ek jagah." />
-  <meta name="twitter:image" content="https://bca-guide-web.onrender.com/assets/cover.jpg" />
-
-  <!-- Theme color (mobile browsers ke liye tab color) -->
-  <meta name="theme-color" content="#6D28D9" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <title>MGKVP BCA 5th Semester PYQ | Previous Year Question Papers</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (Framework used for premium, responsive UI) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff9500;
-            --text: #333;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --shadow: rgba(0, 0, 0, 0.1);
-            --glass: rgba(255, 255, 255, 0.1);
-            --search-bg: rgba(255, 255, 255, 0.15);
-            --bg-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            --institute-primary: #2980b9;
-        }
-
-        .dark-theme {
-            --primary: #8a2be2;
-            --secondary: #4a86e8;
-            --accent: #ffaa33;
-            --text: #f0f0f0;
-            --bg: #121212;
-            --card-bg: #1e1e1e;
-            --header-bg: rgba(30, 30, 30, 0.95);
-            --shadow: rgba(0, 0, 0, 0.4);
-            --glass: rgba(0, 0, 0, 0.2);
-            --search-bg: rgba(0, 0, 0, 0.2);
-            --bg-gradient: linear-gradient(135deg, #1a033d 0%, #103a80 100%);
-            --institute-primary: #5dade2;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
-        }
-
+        /* Custom Animations */
         body {
-            background: var(--bg-gradient);
-            color: var(--text);
-            min-height: 100vh;
-            padding-bottom: 40px;
-            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
         }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--header-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .theme-toggle i {
-            font-size: 1.2rem;
-            color: var(--accent);
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 0 30px;
-        }
-
-        .institute-badge {
-            width: 80px;
-            height: 80px;
-            background: var(--institute-primary);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .institute-badge i {
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        .institute-name {
-            font-size: 1rem;
-            margin-bottom: 8px;
-            color: white;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px var(--shadow);
-            color: white;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            color: white;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .years-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .year-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
-        }
-
-        .year-card:nth-child(1) { animation-delay: 0.1s; }
-        .year-card:nth-child(2) { animation-delay: 0.2s; }
-        .year-card:nth-child(3) { animation-delay: 0.3s; }
-        .year-card:nth-child(4) { animation-delay: 0.4s; }
-        .year-card:nth-child(5) { animation-delay: 0.5s; }
-        .year-card:nth-child(6) { animation-delay: 0.6s; }
-        .year-card:nth-child(7) { animation-delay: 0.7s; }
-        .year-card:nth-child(8) { animation-delay: 0.8s; }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px) rotate(3deg); }
-            to { opacity: 1; transform: translateY(0) rotate(0); }
-        }
-
-        .year-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .year-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 15px 30px var(--shadow);
-        }
-
-        .year-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: bounce 1.5s infinite alternate;
-        }
-
-        @keyframes bounce {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-10px) scale(1.05); }
-        }
-
-        .year-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .year-card h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: var(--accent);
-            animation: expandLine 1s ease-out forwards;
-        }
-
-        @keyframes expandLine {
-            0% { width: 0; }
-            100% { width: 40px; }
-        }
-
-        .year-card p {
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-            line-height: 1.4;
-            flex-grow: 1;
-            color: var(--text);
-        }
-
-        .papers-count {
-            text-align: center;
-            margin-bottom: 15px;
-            background: var(--glass);
-            padding: 10px;
-            border-radius: 10px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .papers-count h3 {
-            margin-bottom: 5px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        .papers-count .count {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(to right, var(--accent), #ff6b00);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 157, 0, 0.4);
-            border: none;
-            cursor: pointer;
-            margin-top: 5px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            font-size: 0.9rem;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 157, 0, 0.6);
-        }
-
-        .btn i {
-            margin-left: 8px;
-            animation: arrowMove 1s infinite alternate;
-        }
-
-        @keyframes arrowMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(4px); }
-        }
-
-        .floating-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            animation: floatParticle 15s infinite linear;
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
+            to {
                 opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg);
-                opacity: 0;
+                transform: translateY(0);
             }
         }
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            opacity: 0.8;
-            padding: 20px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px var(--shadow);
-            color: white;
-            animation: fadeIn 1s ease-out;
-        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-            }
-            
-            .years-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-            }
-            
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .year-card {
-                padding: 15px;
-            }
-            
-            .year-icon {
-                font-size: 2rem;
-            }
-            
-            .year-card h2 {
-                font-size: 1.3rem;
-            }
+        /* Smooth Theme Transition for Backgrounds and Text */
+        body, header, footer, .card-container {
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+        }
+        
+        /* Premium Card Hover Glow */
+        .pyq-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pyq-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .pyq-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            border-color: #374151;
         }
     </style>
 </head>
-<body class="light-theme">
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-        <span>Dark Mode</span>
-    </div>
 
-    <div class="floating-particles" id="particles"></div>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 min-h-screen flex flex-col font-sans selection:bg-primary-500 selection:text-white">
 
-    <div class="container">
-        <header>
-            <div class="institute-badge">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="institute-name">MAHATMA GANDHI KASHI VIDYAPITH
-            </div>
-            <h1>Previous Year Papers</h1>
-            <p class="tagline">Access question papers from 2018 to 2025 for effective exam preparation</p>
-        </header>
-        
-        <div class="years-grid">
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2025</h2>
-                <p>Most recent question papers with updated syllabus and pattern</p>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/80 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
                 
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">25+</div>
+                <!-- Logo / Title -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-primary-500/30">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight hidden sm:block">MGKVP <span class="text-primary-600 dark:text-primary-500">PYQ</span></span>
                 </div>
-                
-                <a href="2025_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2024</h2>
-                <p>Comprehensive collection of last year's question papers</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">30+</div>
-                </div>
-                
-                <a href="2024_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2023</h2>
-                <p>Question papers from the previous academic year</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">28+</div>
-                </div>
-                
-                <a href="2023_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2022</h2>
-                <p>Archive of question papers from two years back</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">26+</div>
-                </div>
-                
-                <a href="2022_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2021</h2>
-                <p>Collection of papers from the pandemic year</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">24+</div>
-                </div>
-                
-                <a href="2021_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2020</h2>
-                <p>Question papers from the beginning of the decade</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">22+</div>
-                </div>
-                
-                <a href="2020_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2019</h2>
-                <p>Archive of papers from the pre-pandemic era</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">20+</div>
-                </div>
-                
-                <a href="2019_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            
-            <div class="year-card">
-                <div class="year-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h2>2018</h2>
-                <p>Historical question papers for trend analysis</p>
-                
-                <div class="papers-count">
-                    <h3><i class="fas fa-file-alt"></i> Papers</h3>
-                    <div class="count">18+</div>
-                </div>
-                
-                <a href="2018_papers.html" class="btn">Open <i class="fas fa-external-link-alt"></i></a>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <i id="theme-icon" class="fas fa-moon text-lg w-5 h-5 flex items-center justify-center transition-transform duration-300"></i>
+                </button>
             </div>
         </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 flex flex-col items-center">
         
-        <footer>
-            <p>&copy; 2023 Excellence Institute of Technology. All rights reserved.</p>
-        </footer>
-    </div>
+        <!-- Hero Section -->
+        <section class="text-center max-w-4xl mx-auto mb-16 md:mb-24 fade-in-up">
+            <!--  -->
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-balance">
+                
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-indigo-600 dark:from-primary-400 dark:to-indigo-400">
+                    MGKVP BCA 5th Semester
+                </span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto text-balance">
+                Access a comprehensive collection of Previous Year Question Papers. Designed for students to practice, prepare, and excel in their final assessments.
+            </p>
+            
+            <a href="#pyq-cards" class="inline-flex items-center justify-center gap-3 px-8 py-4 text-base md:text-lg font-medium text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-500 rounded-full shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-primary-500/50">
+                Explore PYQs <i class="fas fa-arrow-down animate-bounce"></i>
+            </a>
+        </section>
+
+        <!-- PYQ Cards Section -->
+        <section id="pyq-cards" class="w-full pt-8 scroll-mt-24">
+            <div class="flex items-center justify-between mb-8 fade-in-up delay-100">
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3">
+                    <i class="fas fa-folder-open text-primary-500"></i> Available Papers
+                </h2>
+                <div class="h-px flex-grow bg-gray-200 dark:bg-gray-800 ml-6"></div>
+            </div>
+
+            <!-- Responsive Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- 2026 Card -->
+                <a href="semester5/2026/webpage.html" class="pyq-card group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 lg:p-8 cursor-pointer fade-in-up delay-100">
+                    <div class="flex flex-col h-full justify-between">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-file-pdf text-2xl"></i>
+                            </div>
+                            <span class="bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 text-xs font-bold px-3 py-1 rounded-full">Newest</span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">2026</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Previous Year Question Papers</p>
+                            
+                            <div class="flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm group-hover:text-primary-700 dark:group-hover:text-primary-300">
+                                View Papers 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2025 Card -->
+                <a href="semester5/2025/webpage.html" class="pyq-card group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 lg:p-8 cursor-pointer fade-in-up delay-200">
+                    <div class="flex flex-col h-full justify-between">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-file-pdf text-2xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">2025</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Previous Year Question Papers</p>
+                            
+                            <div class="flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm group-hover:text-primary-700 dark:group-hover:text-primary-300">
+                                View Papers 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2024 Card -->
+                <a href="semester5/2024/webpage.html" class="pyq-card group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 lg:p-8 cursor-pointer fade-in-up delay-300">
+                    <div class="flex flex-col h-full justify-between">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-file-pdf text-2xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">2024</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Previous Year Question Papers</p>
+                            
+                            <div class="flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm group-hover:text-primary-700 dark:group-hover:text-primary-300">
+                                View Papers 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2023 Card -->
+                <a href="semester5/2023/webpage.html" class="pyq-card group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 lg:p-8 cursor-pointer fade-in-up delay-400">
+                    <div class="flex flex-col h-full justify-between">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-file-pdf text-2xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">2023</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Previous Year Question Papers</p>
+                            
+                            <div class="flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm group-hover:text-primary-700 dark:group-hover:text-primary-300">
+                                View Papers 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2022 Card -->
+                <a href="semester5/2022/webpage.html" class="pyq-card group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 lg:p-8 cursor-pointer fade-in-up delay-500">
+                    <div class="flex flex-col h-full justify-between">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 rounded-xl bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <i class="fas fa-file-pdf text-2xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">2022</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">Previous Year Question Papers</p>
+                            
+                            <div class="flex items-center text-primary-600 dark:text-primary-400 font-semibold text-sm group-hover:text-primary-700 dark:group-hover:text-primary-300">
+                                View Papers 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 py-8 mt-auto fade-in-up delay-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-lg">
+                <i class="fas fa-graduation-cap text-primary-600 dark:text-primary-500"></i> MGKVP BCA
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm text-center md:text-left">
+                &copy; <span id="current-year"></span> Mahatma Gandhi Kashi Vidyapith. All Rights Reserved.
+            </p>
+            <div class="flex gap-4 text-gray-400 dark:text-gray-500">
+                <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="fas fa-globe"></i></a>
+                <a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        
-        // Check for saved theme preference or respect OS preference
-        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-theme');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-theme');
-            const isDark = body.classList.contains('dark-theme');
+        document.addEventListener('DOMContentLoaded', () => {
             
-            if (isDark) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
-                localStorage.setItem('theme', 'light');
+            // 1. Footer Auto-updating Year
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
             }
-        });
 
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 25;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Random properties
-            const size = Math.random() * 4 + 2;
-            const posX = Math.random() * 100;
-            const delay = Math.random() * 15;
-            const duration = Math.random() * 10 + 15;
-            const opacity = Math.random() * 0.4 + 0.1;
-            
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${posX}vw`;
-            particle.style.animationDelay = `${delay}s`;
-            particle.style.animationDuration = `${duration}s`;
-            particle.style.opacity = opacity;
-            particle.style.background = `rgba(255, 255, 255, ${opacity})`;
-            
-            particlesContainer.appendChild(particle);
-        }
+            // 2. Dark/Light Mode Theme Toggle Logic
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlElement = document.documentElement;
 
-        // Add hover effects to year cards
-        const cards = document.querySelectorAll('.year-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px) scale(1.03)';
+            // Function to set Theme
+            const setTheme = (theme) => {
+                if (theme === 'dark') {
+                    htmlElement.classList.add('dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    // Add a tiny rotation animation on icon switch
+                    themeIcon.style.transform = "rotate(360deg)";
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    // Reset rotation animation
+                    themeIcon.style.transform = "rotate(0deg)";
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Initialize theme on load based on localStorage or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+
+            // Toggle theme on button click
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
             });
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
+            // Handle Icon transition reset for smooth rotation effect
+            themeIcon.addEventListener('transitionend', () => {
+                if(themeIcon.classList.contains('fa-moon')) {
+                   themeIcon.style.transition = 'none';
+                   themeIcon.style.transform = "rotate(0deg)";
+                   setTimeout(() => themeIcon.style.transition = 'transform 0.5s ease', 50);
+                }
             });
         });
     </script>
